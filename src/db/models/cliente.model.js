@@ -1,4 +1,4 @@
-import {Model,DataTypes, Sequelize} from 'sequelize';
+import {Model, DataTypes, Sequelize} from 'sequelize';
 
 const CLIENTES_TABLE = 'clientes';
 
