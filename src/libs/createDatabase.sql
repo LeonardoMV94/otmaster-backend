@@ -13,6 +13,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `OTmaster` DEFAULT CHARACTER SET utf8 ;
 USE `OTmaster` ;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'toor';
+flush privileges;
 
 -- -----------------------------------------------------
 -- Table `OTmaster`.`Roles`

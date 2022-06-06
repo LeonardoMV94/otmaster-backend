@@ -11,8 +11,8 @@ class DispositivosService {
 
     async find(){
         const sql = 'SELECT * FROM dispositivos';
-        const results =  await con.promise().query(sql);
-        return results[0]
+        const [results] =  await con.promise().query(sql);
+        return results
     }
 }
 

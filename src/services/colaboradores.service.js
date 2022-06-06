@@ -1,7 +1,7 @@
 import { MySqlConexion} from "./../libs/mysql.pool.js";
 //import boom from '@hapi/boom';
 
-const con = MySqlConexion();
+const con = await MySqlConexion();
 
 class ColaboradoresService {
 

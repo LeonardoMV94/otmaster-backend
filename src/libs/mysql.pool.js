@@ -10,7 +10,11 @@ dotenv.config({
     path: __dirname + './../../.env'
 })
 
-
+/**
+ * Esta funcion es la configuracion de la pool de mysql y usa variables de entorno del archivo .env
+ * En caso de no existir la base de datos otmaster, use workbench y ejecute archivo createDatabase.sql
+ * @returns Mysql.Pool
+ */
 const MySqlConexion = async () => {
     // si da error intente ejecutando esto en su base de datos revise consultas.sql
     const pool = await mysql.createPool({
