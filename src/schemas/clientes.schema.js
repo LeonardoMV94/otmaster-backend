@@ -1,12 +1,11 @@
 import Joi from 'joi';
 
-const id_cliente = Joi.number();
-const rut_cliente = Joi.string().min(9).max(10)
+const rut_cliente = Joi.string().min(7).max(8)
 const nombre_cliente = Joi.string().min(3).max(30) ;
 const appat_cliente = Joi.string().min(3).max(30);
 const apmat_cliente = Joi.string().min(3).max(30);
-const correo_cliente = Joi.email();
-const tel_cliente = Joi.string();
+const correo_cliente = Joi.string().email();
+const tel_cliente = Joi.number().min(9);
 
 const createClienteSchema = Joi.object({
     rut_cliente: rut_cliente.required(),    
@@ -27,7 +26,7 @@ const updateClienteSchema = Joi.object({
 });
 
 const getClienteByid = Joi.object({
-    id_cliente: id_cliente.required()
+    rut_cliente: rut_cliente.required()
 });
 
 export {

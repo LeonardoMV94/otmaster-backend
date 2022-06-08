@@ -6,7 +6,7 @@ const ClienteSchema = {
     rut_cliente: {
         allowNull: false,
         primaryKey: true,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
     },
     nombre_cliente: {
         allowNull: false,
@@ -28,8 +28,19 @@ const ClienteSchema = {
     tel_cliente: {
         allowNull: false,
         type: DataTypes.INTEGER,
+    },
+    createdAt:{
+        allowNull: false,
+        type: DataTypes.DATE,
+        field: 'created_at',
+        defaultValue: Sequelize.NOW
+    },
+    updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        field: 'updated_at',
+        defaultValue: Sequelize.NOW
     }
-    
 }
 
 class Cliente extends Model{

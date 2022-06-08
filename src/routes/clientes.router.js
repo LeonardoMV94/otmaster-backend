@@ -1,5 +1,7 @@
 import express from "express";
 import ClientesService from "./../services/clientes.service.js";
+import validatorHandler from './../middlewares/validator.handler.js'
+import {createClienteSchema, updateClienteSchema, getClienteByid} from "./../schemas/clientes.schema.js"
 
 const router = express.Router();
 const service = new ClientesService();
@@ -17,19 +19,21 @@ router.get('/', async(req,res,next) => {
 router.get('/:id', async (req,res,next) => {    
     try {
         const {id} = req.params;
-        const results = await service.findOne(id);
-        if (results.length > 0) {
-            res.status(200).json(results[0]);
-        } else {
-            res.status(404).json({mensaje: "no existe el cliente"})
-        }
+        const results = await service.findById(id);
+        res.status(200).json(results);
+        // if (results.length > 0) {
+        // } else {
+        //     res.status(404).json({mensaje: "no existe el cliente"})
+        // }
     } catch (error) {
         next(error)
     }
     
 });
 
-router.post('/add/', async (req, res, next) => {        
+router.post('/add/', 
+    validatorHandler(createClienteSchema, 'body'),
+    async (req, res, next) => {        
     try {
         const clienteObj = {
             rut_cliente: req.body.rut_cliente,
