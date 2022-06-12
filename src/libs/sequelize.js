@@ -11,21 +11,20 @@ dotenv.config({
     path: __dirname + './../../.env'
 })
 
-// const configDB = {
-//     host: process.env.BD_HOST,
-//     database: process.env.BD_NAME,
-//     user: process.env.BD_USER,
-//     password: process.env.BD_PASSWORD,
-//     waitForConnections: true,
-//     connectionLimit: 10,
-//     queueLimit: 0
-// }
+const DB        = process.env.BD_SYSTEM
+const NAME      = process.env.BD_NAME
+const HOST      = process.env.DB_HOST
+const PORT      = process.env.BD_PORT
+const USER      = process.env.BD_USER
+const PASSWORD  = process.env.BD_PASSWORD
+
+const URI = `${DB}://${USER}:${PASSWORD}@${HOST}:${PORT}/${NAME}`
+
 
 // https://sequelize.org/docs/v6/getting-started/
 
-const sequelize = new Sequelize(process.env.BD_NAME,process.env.BD_USER,process.env.BD_PASSWORD,{
-    localhost: process.env.BD_HOST,
-    dialect:'mysql',
+const sequelize = new Sequelize( URI, {
+    dialect:`${DB}`,
     logging: true
 })
 

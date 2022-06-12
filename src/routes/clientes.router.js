@@ -31,7 +31,7 @@ router.get('/:id', async (req,res,next) => {
     
 });
 
-router.post('/add/', 
+router.post('/add/',
     validatorHandler(createClienteSchema, 'body'),
     async (req, res, next) => {        
     try {

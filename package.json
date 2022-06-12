@@ -1,7 +1,7 @@
 {
   "name": "otmaster",
   "version": "1.0.0",
-  "description": "proyecto de taller Sistema de Soporte ",
+  "description": "proyecto de taller Sistema de tickets de soporte ",
   "main": "src/index.js",
   "type": "module",
   "scripts": {

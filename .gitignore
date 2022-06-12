@@ -183,4 +183,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Docker volumes
+postgres_data
+mysql_data
+
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node,Linux,macOS,Windows
