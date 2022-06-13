@@ -16,3 +16,9 @@ npm run dev
 ```
 npm run start
 ```
+### Comands Docker Compose
+```
+docker-compose stop mysql
+docker-compose run mysql 
+```
+### - ./mysql_data:/var/lib/mysql
