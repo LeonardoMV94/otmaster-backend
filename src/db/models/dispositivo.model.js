@@ -1,37 +1,36 @@
 import {Model, DataTypes, Sequelize} from 'sequelize';
 
-const DIRECCIONES_TABLE = 'direcciones';
+const DISPOSITIVOS_TABLE = 'dispositivos';
 
-const DireccionSchema = {
-    ID_direccion: {
+const DispositivoSchema = {
+    ID_dispositivo: {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.INTEGER,
     },
-    calle: {
-        allowNull: false,
-        type: DataTypes.STRING,
-    },
-    numero_calle: {
+    num_serie_dispositivo: {
         allowNull: false,
         type: DataTypes.INTEGER,
     },
-    comunas_ID_comunas: {
+    modelo: {
+        allowNull: false,
+        type: DataTypes.STRING,
+    },
+    marcas_dispositivos_ID_marcas: {
         allowNull: false,
         type: DataTypes.INTEGER,
         // Foreign Key implementada con 'references', No probado que funcione (12-06-2022).
         references: { 
-            model: 'comunas', 
-            key: 'ID_comuna',
+            model: 'marcas_dispositivos', 
+            key: 'ID_marca',
         },
     },
-    // Foreign Key hacia la tabla 'colaboradores'
-    colaboradores_ID_colaborador: {
+    tipos_dispositivos_ID_tipos: {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-            model: 'colaboradores',
-            key: 'rut_colaborador',
+            model: 'tipos_dispositivos',
+            key: 'ID_tipo',
         }
     },
     createdAt:{
@@ -48,22 +47,22 @@ const DireccionSchema = {
     }
 }
 
-class Direccion extends Model{
+class Dispositivo extends Model{
     static associate(){
         //models
     }
     static config(sequelize) {
         return {
             sequelize,
-            tableName: DIRECCIONES_TABLE,
-            modelName: 'Direccion',
+            tableName: DISPOSITIVOS_TABLE,
+            modelName: 'Dispositivo',
             timestamp: false
         }
     }
 }
 
 export {
-    DIRECCIONES_TABLE,
-    DireccionSchema,
-    Direccion
+    DISPOSITIVOS_TABLE,
+    DispositivoSchema,
+    Dispositivo
 }

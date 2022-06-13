@@ -1,37 +1,59 @@
 import {Model, DataTypes, Sequelize} from 'sequelize';
 
-const DIRECCIONES_TABLE = 'direcciones';
+const TICKETS_TABLE = 'tickets';
 
-const DireccionSchema = {
-    ID_direccion: {
+const TicketSchema = {
+    ID_ticket: {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.INTEGER,
     },
-    calle: {
+    diagnostico_ticket: {
         allowNull: false,
         type: DataTypes.STRING,
     },
-    numero_calle: {
+    resolucion_ticket: {
+        allowNull: false,
+        type: DataTypes.STRING,
+    },
+    estado_tickets_ID_estado: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        references: {
+            model: 'estado_tickets',
+            key: 'ID_estado_ticket',
+        }
     },
-    comunas_ID_comunas: {
+    dispositivos_ID_dispositivo: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        // Foreign Key implementada con 'references', No probado que funcione (12-06-2022).
-        references: { 
-            model: 'comunas', 
-            key: 'ID_comuna',
-        },
+        references: {
+            model: 'dispositivos',
+            key: 'ID_dispositivo',
+        }
     },
-    // Foreign Key hacia la tabla 'colaboradores'
+    clientes_ID_cliente: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'clientes',
+            key: 'rut_cliente',
+        }
+    },
     colaboradores_ID_colaborador: {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
             model: 'colaboradores',
             key: 'rut_colaborador',
+        }
+    },
+    repuestos_ID_repuesto: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'repuestos',
+            key: 'ID_repuesto',
         }
     },
     createdAt:{
@@ -48,22 +70,22 @@ const DireccionSchema = {
     }
 }
 
-class Direccion extends Model{
+class Ticket extends Model{
     static associate(){
         //models
     }
     static config(sequelize) {
         return {
             sequelize,
-            tableName: DIRECCIONES_TABLE,
-            modelName: 'Direccion',
+            tableName: TICKETS_TABLE,
+            modelName: 'Ticket',
             timestamp: false
         }
     }
 }
 
 export {
-    DIRECCIONES_TABLE,
-    DireccionSchema,
-    Direccion
+    TICKETS_TABLE,
+    TicketSchema,
+    Ticket
 }

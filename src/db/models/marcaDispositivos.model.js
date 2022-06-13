@@ -1,14 +1,14 @@
 import {Model, DataTypes, Sequelize} from 'sequelize';
 
-const COMUNAS_TABLE = 'comunas';
+const MARCAS_DISPOSITIVOS_TABLE = 'marcas_dispositivos';
 
-const ComunaSchema = {
-    ID_comuna: {
+const MarcaDispositivoSchema = {
+    ID_marca: {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.INTEGER,
     },
-    comuna: {
+    nombre_marca: {
         allowNull: false,
         type: DataTypes.STRING,
     },
@@ -26,22 +26,22 @@ const ComunaSchema = {
     }
 }
 
-class Comuna extends Model{
+class MarcaDispositivo extends Model{
     static associate(){
         //models
     }
     static config(sequelize) {
         return {
             sequelize,
-            tableName: COMUNAS_TABLE,
-            modelName: 'Comuna',
+            tableName: MARCAS_DISPOSITIVOS_TABLE,
+            modelName: 'MarcaDispositivo',
             timestamp: false
         }
     }
 }
 
 export {
-    COMUNAS_TABLE,
-    ComunaSchema,
-    Comuna
+    MARCAS_DISPOSITIVOS_TABLE,
+    MarcaDispositivoSchema,
+    MarcaDispositivo
 }

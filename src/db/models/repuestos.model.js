@@ -1,16 +1,24 @@
 import {Model, DataTypes, Sequelize} from 'sequelize';
 
-const COMUNAS_TABLE = 'comunas';
+const REPUESTOS_TABLE = 'repuestos';
 
-const ComunaSchema = {
-    ID_comuna: {
+const RepuestoSchema = {
+    ID_repuesto: {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.INTEGER,
     },
-    comuna: {
+    repuesto: {
         allowNull: false,
         type: DataTypes.STRING,
+    },
+    tickets_ID_ticket: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'tickets',
+            key: 'ID_ticket',
+        }
     },
     createdAt:{
         allowNull: false,
@@ -26,22 +34,22 @@ const ComunaSchema = {
     }
 }
 
-class Comuna extends Model{
+class Repuesto extends Model{
     static associate(){
         //models
     }
     static config(sequelize) {
         return {
             sequelize,
-            tableName: COMUNAS_TABLE,
-            modelName: 'Comuna',
+            tableName: REPUESTOS_TABLE,
+            modelName: 'Repuesto',
             timestamp: false
         }
     }
 }
 
 export {
-    COMUNAS_TABLE,
-    ComunaSchema,
-    Comuna
+    REPUESTOS_TABLE,
+    RepuestoSchema,
+    Repuesto
 }
