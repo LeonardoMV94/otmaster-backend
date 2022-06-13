@@ -31,6 +31,7 @@ services:
       - 3306:3306
     volumes:
       - ./mysql_data:/var/lib/mysql
+      - ./mysql_data:/Users/allancortez/Documents/Inacap/Proyecto SOFTWARE/otmaster-backend
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
