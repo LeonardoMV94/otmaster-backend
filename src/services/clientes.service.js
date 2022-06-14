@@ -1,6 +1,6 @@
 // import { MySqlConexion} from "../libs/mysql.pool.js";
 import boom from '@hapi/boom';
-import sequelize from './../libs/sequelize.js'
+import sequelize from '../libs/sequelize.js';
 // const con = await MySqlConexion();
 
 const {models} = sequelize;
@@ -49,9 +49,9 @@ class ClientesService {
     // };
 
     async find() {
-        const clientes = await models.Cliente.findAll()
-        return clientes
-    }
+        const clientes = await models.Cliente.findAll();
+        return clientes;
+    };
 
     /**
      * Esta funcion busca un cliente por rut_cliente (PrimaryKey) en la tabla CLIENTES
@@ -68,11 +68,11 @@ class ClientesService {
     //     }
     // };
     async findById(id) {
-        const cliente = await models.Cliente.findByPk(id)
+        const cliente = await models.Cliente.findByPk(id);
         if (!cliente){
-            throw boom.notFound('user not found')
+            throw boom.notFound('cliente not found');
         }
-        return cliente
+        return cliente;
     };
 
     /**
@@ -91,9 +91,9 @@ class ClientesService {
     //     }       
     // };
     async update(rut, changes) {
-        const cliente = await this.findById(rut)
-        const rta = await cliente.update(changes)
-        return rta
+        const cliente = await this.findById(rut);
+        const rta = await cliente.update(changes);
+        return rta;
     };
 
     /**
@@ -111,9 +111,9 @@ class ClientesService {
     //     }      
     // };
     async delete(rut) {        
-        const cliente = await this.findById(rut)
+        const cliente = await this.findById(rut);
         await cliente.destroy();
-        return { rut }
+        return { rut };
     };
 }
 

@@ -4,6 +4,7 @@ import ColaboradoresService from './../services/colaboradores.service.js';
 const router = express.Router();
 const service = new ColaboradoresService();
 
+// CRUD Colaboradores
 router.get('/', async(req, res,next) => {
     try {        
         const results = await service.find();
