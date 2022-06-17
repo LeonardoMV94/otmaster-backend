@@ -50,7 +50,7 @@ router.post('/add/',
         next(error);
     }
     
-})
+});
 
 router.put('/update/:rut', async (req, res,next) =>{
     try {

@@ -48,13 +48,6 @@ const ColaboradorSchema = {
             key: 'ID_direccion',
         }
     },
-    /*
-    correo_colaborador: {
-        allowNull: false,
-        type: DataTypes.STRING,
-        unique: true
-    },
-    */
     // Fecha de creacion : createdAt attribute
     createdAt:{
         allowNull: false,
