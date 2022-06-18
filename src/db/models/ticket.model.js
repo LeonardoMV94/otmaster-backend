@@ -18,11 +18,7 @@ const TicketSchema = {
     },
     estado_tickets_ID_estado: {
         allowNull: false,
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'estado_tickets',
-            key: 'ID_estado_ticket',
-        }
+        type: DataTypes.INTEGER
     },
     dispositivos_ID_dispositivo: {
         allowNull: false,

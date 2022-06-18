@@ -39,15 +39,6 @@ const ColaboradorSchema = {
         referencesKey: 'ID_rol',
         */
     },
-    // Foreign Key hacia la tabla 'direcciones'
-    direcciones_ID_direcion: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'direcciones',
-            key: 'ID_direccion',
-        }
-    },
     /*
     correo_colaborador: {
         allowNull: false,

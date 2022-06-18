@@ -27,7 +27,7 @@ const ClienteSchema = {
     },
     tel_cliente: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
     },
     createdAt:{
         allowNull: false,
