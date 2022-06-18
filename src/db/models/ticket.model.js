@@ -44,14 +44,14 @@ const TicketSchema = {
             key: 'rut_colaborador',
         }
     },
-    repuestos_ID_repuesto: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'repuestos',
-            key: 'ID_repuesto',
-        }
-    },
+    // repuestos_ID_repuesto: {
+    //     allowNull: false,
+    //     type: DataTypes.INTEGER,
+    //     references: {
+    //         model: 'repuestos',
+    //         key: 'ID_repuesto',
+    //     }
+    // },
     createdAt:{
         allowNull: false,
         type: DataTypes.DATE,

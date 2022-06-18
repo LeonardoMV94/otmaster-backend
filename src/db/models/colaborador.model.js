@@ -25,13 +25,13 @@ const ColaboradorSchema = {
         type: DataTypes.STRING,
     },
     // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Roles'.
-    roles_ID_rol: {
+    roles_id_rol: {
         allowNull: false,
         type: DataTypes.INTEGER,
         // Foreign Key implementada con 'references', No probado que funcione (12-06-2022).
         references: { 
             model: 'roles', 
-            key: 'ID_rol',
+            key: 'id_rol',
         },
         /*
         // Otra opciones

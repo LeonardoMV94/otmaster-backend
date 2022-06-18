@@ -3,7 +3,7 @@ import {Model, DataTypes, Sequelize} from 'sequelize';
 const DISPOSITIVOS_TABLE = 'dispositivos';
 
 const DispositivoSchema = {
-    ID_dispositivo: {
+    id_dispositivo: {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.INTEGER,
@@ -22,7 +22,7 @@ const DispositivoSchema = {
         // Foreign Key implementada con 'references', No probado que funcione (12-06-2022).
         references: { 
             model: 'marcas_dispositivos', 
-            key: 'ID_marca',
+            key: 'id_marca',
         },
     },
     tipos_dispositivos_ID_tipos: {
@@ -30,7 +30,7 @@ const DispositivoSchema = {
         type: DataTypes.INTEGER,
         references: {
             model: 'tipos_dispositivos',
-            key: 'ID_tipo',
+            key: 'id_tipo',
         }
     },
     createdAt:{

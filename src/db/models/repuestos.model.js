@@ -12,14 +12,14 @@ const RepuestoSchema = {
         allowNull: false,
         type: DataTypes.STRING,
     },
-    tickets_ID_ticket: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'tickets',
-            key: 'ID_ticket',
-        }
-    },
+    // tickets_ID_ticket: {
+    //     allowNull: false,
+    //     type: DataTypes.INTEGER,
+    //     references: {
+    //         model: 'tickets',
+    //         key: 'id_ticket',
+    //     }
+    // },
     createdAt:{
         allowNull: false,
         type: DataTypes.DATE,

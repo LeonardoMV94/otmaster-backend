@@ -1,16 +1,23 @@
 import {Model, DataTypes, Sequelize} from 'sequelize';
 
-const ROLES_TABLE = 'roles';
+const REPUESTOS_HAS_TICKETS_TABLE = 'repuestos_has_tickets';
 
-const RolesSchema = {
-    id_rol: {
+const Repuestos_has_tickets_Schema = {
+    repuesots_id_repuestos: {
         allowNull: false,
-        primaryKey: true,
         type: DataTypes.INTEGER,
+        references: {
+            model: 'repuestos',
+            key: 'id_repuesto',
+        }
     },
-    nombre_rol: {
+    tickets_id_ticket: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'tickets',
+            key: 'id_ticket',
+        }
     },
     createdAt:{
         allowNull: false,
@@ -26,22 +33,22 @@ const RolesSchema = {
     }
 }
 
-class Rol extends Model{
+class Repuestos_has_tickets extends Model{
     static associate(){
         //models
     }
     static config(sequelize) {
         return {
             sequelize,
-            tableName: ROLES_TABLE,
-            modelName: 'Rol',
+            tableName: REPUESTOS_HAS_TICKETS_TABLE,
+            modelName: 'Repuestos_has_tickets',
             timestamp: false
         }
     }
 }
 
 export {
-    ROLES_TABLE,
-    RolesSchema,
-    Rol
+    REPUESTOS_HAS_TICKETS_TABLE,
+    Repuestos_has_tickets_Schema,
+    Repuestos_has_tickets
 }
