@@ -19,6 +19,9 @@ const setupModels = (sequelize) => {
     Ticket.init(TicketSchema, Ticket.config(sequelize));
     Repuesto.init(RepuestoSchema, Repuesto.config(sequelize));
     Repuestos_has_tickets.init(Repuestos_has_tickets_Schema, Repuestos_has_tickets.config(sequelize));
+
+    Rol.associate(sequelize.models)
+    Colaborador.associate(sequelize.models)
 }
 
 export default setupModels;

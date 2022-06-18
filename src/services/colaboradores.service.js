@@ -14,7 +14,9 @@ class ColaboradoresService {
     };
 
     async find() {
-        const colaboradores = await models.Colaborador.findAll()
+        const colaboradores = await models.Colaborador.findAll({
+            include: ['roles']
+        })
         return colaboradores
     }
 

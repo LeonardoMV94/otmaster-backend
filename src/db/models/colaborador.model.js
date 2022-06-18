@@ -1,4 +1,5 @@
 import {Model, DataTypes, Sequelize} from 'sequelize';
+import { ROLES_TABLE } from './roles.model.js'
 
 const COLABORADORES_TABLE = 'colaboradores';
 
@@ -25,27 +26,18 @@ const ColaboradorSchema = {
         type: DataTypes.STRING,
     },
     // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Roles'.
-    roles_id_rol: {
+    rolesIdRol: {
+        field: 'roles_id_rol',
         allowNull: false,
         type: DataTypes.INTEGER,
         // Foreign Key implementada con 'references', No probado que funcione (12-06-2022).
         references: { 
-            model: 'roles', 
+            model: ROLES_TABLE, 
             key: 'id_rol',
         },
-        /*
-        // Otra opciones
-        references: 'roles',
-        referencesKey: 'ID_rol',
-        */
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
     },
-    /*
-    correo_colaborador: {
-        allowNull: false,
-        type: DataTypes.STRING,
-        unique: true
-    },
-    */
     // Fecha de creacion : createdAt attribute
     createdAt:{
         allowNull: false,
@@ -62,8 +54,9 @@ const ColaboradorSchema = {
 }
 
 class Colaborador extends Model{
-    static associate(){
+    static associate(models){
         //models
+        this.belongsTo( models.Rol, { as : 'roles' } )
     }
     static config(sequelize) {
         return {

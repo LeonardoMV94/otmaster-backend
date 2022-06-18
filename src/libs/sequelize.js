@@ -17,6 +17,7 @@ const sequelize = new Sequelize( URI, {
 
 setupModels(sequelize);
 
+// no se debe usar en produccion
 sequelize.sync();
 
 export default sequelize;
