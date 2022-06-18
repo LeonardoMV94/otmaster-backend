@@ -1,5 +1,5 @@
 import express from "express";
-import ColaboradoresService from './../services/colaboradores.service.js';
+import ColaboradoresService from '../services/colaboradores.service.js'
 
 const router = express.Router();
 const service = new ColaboradoresService();

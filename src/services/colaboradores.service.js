@@ -1,19 +1,42 @@
-import { MySqlConexion} from "./../libs/mysql.pool.js";
-//import boom from '@hapi/boom';
+import boom from '@hapi/boom';
+import sequelize from '../libs/sequelize.js'
 
-const con = await MySqlConexion();
-
+const {models} = sequelize;
 class ColaboradoresService {
 
-    constructor(){
+    constructor() {
+        
+    };
 
+    async create(colaboradorObj) {
+        const newColaborador = await models.Colaboradores.create(colaboradorObj);
+        return newColaborador;
+    };
+
+    async find() {
+        const colaboradores = await models.Colaborador.findAll()
+        return colaboradores
     }
 
-    async find(){
-        const sql = 'SELECT * FROM colaboradores';
-        const [results] =  await con.promise().query(sql);
-        return results
-    }
+    async findById(id) {
+        const colaborador = await models.Colaborador.findByPk(id)
+        if (!colaborador){
+            throw boom.notFound('colaborador not found')
+        }
+        return colaborador
+    };
+
+    async update(rut, changes) {
+        const colaborador = await this.findById(rut)
+        const rta = await colaborador.update(changes)
+        return rta
+    };
+
+    async delete(rut) {        
+        const colaborador = await this.findById(rut)
+        await colaborador.destroy();
+        return { rut }
+    };
 }
 
 export default ColaboradoresService;
