@@ -38,6 +38,17 @@ class ColaboradoresService {
         return colaborador
     };
 
+    async findForAuth(rutColaborador) {
+        const colaborador = await models.Colaborador.findByPk(rutColaborador, {
+            attributes: ['rut_colaborador','password_colaborador'],
+            include: ['roles'] 
+        })
+        if (!colaborador){
+            throw boom.notFound('colaborador not found')
+        }
+        return colaborador
+    };
+
     async update(rut, changes) {
         const colaborador = await this.findById(rut)
         const rta = await colaborador.update(changes)

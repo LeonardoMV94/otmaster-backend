@@ -13,6 +13,9 @@ app.use(express.json());
 
 app.use(cors());
 
+// auth
+import './utils/auth/index.js'
+
 // test
 app.get('/test', checkApiKey, (req, res) => {
     res.send('Hola, soy una nueva ruta de test')

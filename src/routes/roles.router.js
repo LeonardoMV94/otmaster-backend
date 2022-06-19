@@ -15,12 +15,12 @@ router.get('/', async(req, res,next) => {
     }     
 });
 
-router.get('/:id',
+router.get('/:id_rol',
     validatorHandler(getRolSchema, 'params'),
     async (req, res, next) => {
         try {
-            const { id } = req.params;
-            const category = await service.findById(id);
+            const { id_rol } = req.params;
+            const category = await service.findById(id_rol);
             res.json(category);
         } catch (error) {
             next(error);
@@ -41,12 +41,12 @@ router.post('/',
     }
 );
 
-router.patch('/:id',
+router.patch('/:id_rol',
     async (req, res, next) => {
         try {
-            const { id } = req.params;
+            const { id_rol } = req.params;
             const body = req.body;
-            const rol = await service.update(id, body);
+            const rol = await service.update(id_rol, body);
             res.json(rol);
         } catch (error) {
             next(error);
@@ -54,12 +54,12 @@ router.patch('/:id',
     }
 );
 
-router.delete('/:id',
+router.delete('/:id_rol',
     async (req, res, next) => {
         try {
-            const { id } = req.params;
-            await service.delete(id);
-            res.status(201).json({id});
+            const { id_rol } = req.params;
+            await service.delete(id_rol);
+            res.status(201).json({id_rol});
         } catch (error) {
             next(error);
         }
