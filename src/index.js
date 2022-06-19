@@ -1,6 +1,7 @@
 import express from 'express';
 import routerApi from './routes/index.js';
 import {logErrors, errorHandler,boomErrorHandler, ormErrorHandler} from './middlewares/error.handler.js';
+import checkApiKey from './middlewares/auth.handler.js';
 import cors from 'cors';
 
 //inicializar
@@ -12,6 +13,11 @@ app.use(express.json());
 
 app.use(cors());
 
+// test
+app.get('/test', checkApiKey, (req, res) => {
+    res.send('Hola, soy una nueva ruta de test')
+})
+
 //routers
 routerApi(app);
 
@@ -21,8 +27,10 @@ app.use(ormErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
+
 //port
 app.listen(port, () => {
+    console.clear()
     console.log('Servidor inicializado en puerto 8000');
 });
 

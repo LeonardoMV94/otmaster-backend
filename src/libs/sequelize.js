@@ -12,7 +12,7 @@ const URI = `${config.dbSystem}://${USER}:${PASSWORD}@${config.dbHost}:${config.
 
 const sequelize = new Sequelize( URI, {
     dialect:`${config.dbSystem}`,
-    logging: true
+    logging: false
 })
 
 setupModels(sequelize);

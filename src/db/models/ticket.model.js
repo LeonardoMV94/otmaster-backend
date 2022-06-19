@@ -6,6 +6,7 @@ const TicketSchema = {
     ID_ticket: {
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
         type: DataTypes.INTEGER,
     },
     diagnostico_ticket: {

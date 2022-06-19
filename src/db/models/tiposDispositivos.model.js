@@ -6,6 +6,7 @@ const TipoDispositivoSchema = {
     ID_tipo: {
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
         type: DataTypes.INTEGER,
     },
     nombre_tipo: {

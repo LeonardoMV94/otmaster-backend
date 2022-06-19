@@ -6,6 +6,7 @@ const MarcaDispositivoSchema = {
     ID_marca: {
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
         type: DataTypes.INTEGER,
     },
     nombre_marca: {

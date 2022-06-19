@@ -1,5 +1,6 @@
 import boom from '@hapi/boom';
 import sequelize from '../libs/sequelize.js'
+import bcrypt from 'bcrypt'
 
 const {models} = sequelize;
 class ColaboradoresService {
@@ -8,20 +9,29 @@ class ColaboradoresService {
         
     };
 
-    async create(colaboradorObj) {
-        const newColaborador = await models.Colaboradores.create(colaboradorObj);
+    async create(data) {
+        const hash = await bcrypt.hash( data.password_colaborador, 10 )
+        const newColaborador = await models.Colaborador.create( {
+            ...data,
+            password_colaborador: hash
+        } );
+        delete newColaborador.dataValues.password_colaborador
         return newColaborador;
     };
 
     async find() {
         const colaboradores = await models.Colaborador.findAll({
-            include: ['roles']
+            attributes: {exclude: ['password_colaborador']},
+            include: ['roles']            
         })
+        
         return colaboradores
     }
 
     async findById(id) {
-        const colaborador = await models.Colaborador.findByPk(id)
+        const colaborador = await models.Colaborador.findByPk(id, {
+            attributes: {exclude: ['password_colaborador']}
+        })
         if (!colaborador){
             throw boom.notFound('colaborador not found')
         }

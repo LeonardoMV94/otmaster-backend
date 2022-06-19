@@ -1,26 +1,26 @@
 import express from "express";
-import ColaboradoresService from '../services/colaboradores.service.js'
-import validatorHandler from './../middlewares/validator.handler.js'
-import { createColaboradorSchema, updateColaboradoSchema, getColaboradorSchema } from './../schemas/colaboradores.schema.js'
+import RolesService from '../services/roles.service.js'
+import validatorHandler from '../middlewares/validator.handler.js'
+import { createRolSchema, getRolSchema } from '../schemas/roles.schema.js'
 
 const router = express.Router();
-const service = new ColaboradoresService();
+const service = new RolesService();
 
 router.get('/', async(req, res,next) => {
     try {        
-        const colab = await service.find();
-        res.json(colab)
+        const rol = await service.find();
+        res.json(rol)
     } catch (error) {
         next(error)
     }     
 });
 
-router.get('/:rut_colaborador',
-    validatorHandler(getColaboradorSchema, 'params'),
+router.get('/:id',
+    validatorHandler(getRolSchema, 'params'),
     async (req, res, next) => {
         try {
-            const { rut_colaborador } = req.params;
-            const category = await service.findById(rut_colaborador);
+            const { id } = req.params;
+            const category = await service.findById(id);
             res.json(category);
         } catch (error) {
             next(error);
@@ -29,7 +29,7 @@ router.get('/:rut_colaborador',
 );
 
 router.post('/',
-    validatorHandler(createColaboradorSchema, 'body'),
+    validatorHandler(createRolSchema, 'body'),
     async (req, res, next) => {
         try {
             const body = req.body;
@@ -42,14 +42,12 @@ router.post('/',
 );
 
 router.patch('/:id',
-    validatorHandler(getColaboradorSchema, 'params'),
-    validatorHandler(updateColaboradoSchema, 'body'),
     async (req, res, next) => {
         try {
             const { id } = req.params;
             const body = req.body;
-            const category = await service.update(id, body);
-            res.json(category);
+            const rol = await service.update(id, body);
+            res.json(rol);
         } catch (error) {
             next(error);
         }
@@ -57,7 +55,6 @@ router.patch('/:id',
 );
 
 router.delete('/:id',
-    validatorHandler(getColaboradorSchema, 'params'),
     async (req, res, next) => {
         try {
             const { id } = req.params;

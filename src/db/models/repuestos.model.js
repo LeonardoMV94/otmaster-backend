@@ -6,6 +6,7 @@ const RepuestoSchema = {
     ID_repuesto: {
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
         type: DataTypes.INTEGER,
     },
     repuesto: {

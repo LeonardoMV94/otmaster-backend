@@ -6,6 +6,7 @@ const DispositivoSchema = {
     id_dispositivo: {
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
         type: DataTypes.INTEGER,
     },
     num_serie_dispositivo: {

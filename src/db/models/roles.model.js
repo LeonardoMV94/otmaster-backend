@@ -4,6 +4,7 @@ const ROLES_TABLE = 'roles';
 
 const RolesSchema = {
     id_rol: {
+        autoIncrement: true,
         allowNull: false,
         primaryKey: true,
         type: DataTypes.INTEGER,

@@ -14,9 +14,7 @@ class RolesService {
     };
 
     async find() {
-        const roles = await models.Rol.findAll({
-            include: ['roles']
-        })
+        const roles = await models.Rol.findAll()
         return roles
     }
 
