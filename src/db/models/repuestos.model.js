@@ -36,8 +36,14 @@ const RepuestoSchema = {
 }
 
 class Repuesto extends Model{
-    static associate(){
-        //models
+    static associate(models){
+        //relacion uno a muchos
+        this.belongsToMany(models.Ticket, {
+            as: 'items',
+            through: models.Repuestos_has_tickets,
+            foreignKey: 'repuestosIdRepuesto',
+            otherKey: 'ticketsIdTicket'
+        })
     }
     static config(sequelize) {
         return {

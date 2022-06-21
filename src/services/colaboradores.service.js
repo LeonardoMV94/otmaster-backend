@@ -9,6 +9,11 @@ class ColaboradoresService {
         
     };
 
+    /**
+     * Esta funcion crea un nuevo colaborador en la tabla COLABORADORES con contraseña encriptada
+     * @param {Object} data Es el objeto que contiene los datos de un nuevo colaborador
+     * @returns newColaborador
+     */
     async create(data) {
         const hash = await bcrypt.hash( data.password_colaborador, 10 )
         const newColaborador = await models.Colaborador.create( {
@@ -19,6 +24,10 @@ class ColaboradoresService {
         return newColaborador;
     };
 
+    /**
+     * Funcion que busca todos los colaboradores y los retorna
+     * @returns Array retorna array de objetos excluyendo contraseña y haciendo join con roles
+     */
     async find() {
         const colaboradores = await models.Colaborador.findAll({
             attributes: {exclude: ['password_colaborador']},
@@ -28,6 +37,11 @@ class ColaboradoresService {
         return colaboradores
     }
 
+    /**
+     * Funcion que retorna colaborador segun ID de la tabla COLABORADORES
+     * @param {Number} id 
+     * @returns colaborador Retorna colaborador excluyendo contraseña
+     */
     async findById(id) {
         const colaborador = await models.Colaborador.findByPk(id, {
             attributes: {exclude: ['password_colaborador']}

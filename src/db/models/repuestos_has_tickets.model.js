@@ -3,7 +3,8 @@ import {Model, DataTypes, Sequelize} from 'sequelize';
 const REPUESTOS_HAS_TICKETS_TABLE = 'repuestos_has_tickets';
 
 const Repuestos_has_tickets_Schema = {
-    repuesots_id_repuestos: {
+    repuestosIdRepuesto: {
+        field: 'repuestos_id_repuesto',
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
@@ -11,7 +12,8 @@ const Repuestos_has_tickets_Schema = {
             key: 'id_repuesto',
         }
     },
-    tickets_id_ticket: {
+    ticketsIdTicket: {
+        field: 'tickets_id_ticket',
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {

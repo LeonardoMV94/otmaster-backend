@@ -9,15 +9,19 @@ const TicketSchema = {
         autoIncrement: true,
         type: DataTypes.INTEGER,
     },
-    diagnostico_ticket: {
+    problema_ticket: {
         allowNull: false,
+        type: DataTypes.STRING
+    },
+    diagnostico_ticket: {
+        allowNull: true,
         type: DataTypes.STRING,
     },
     resolucion_ticket: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING,
     },
-    estado_tickets_ID_estado: {
+    estado_ticket: {
         allowNull: false,
         type: DataTypes.INTEGER
     },
@@ -45,14 +49,6 @@ const TicketSchema = {
             key: 'rut_colaborador',
         }
     },
-    // repuestos_ID_repuesto: {
-    //     allowNull: false,
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //         model: 'repuestos',
-    //         key: 'ID_repuesto',
-    //     }
-    // },
     createdAt:{
         allowNull: false,
         type: DataTypes.DATE,
@@ -68,8 +64,15 @@ const TicketSchema = {
 }
 
 class Ticket extends Model{
-    static associate(){
-        //models
+    static associate(models){
+        //relacion uno a muchos hacia repuesto
+        this.belongsToMany(models.Repuesto, {
+            as: 'items',
+            through: models.Repuestos_has_tickets,
+            foreignKey: 'ticketsIdTicket',
+            otherKey: 'repuestosIdRepuesto'
+        })
+        // TODO: faltan relaciones: colaboradores, clientes, dispositivos
     }
     static config(sequelize) {
         return {
