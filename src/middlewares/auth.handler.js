@@ -9,4 +9,13 @@ const checkApiKey = (req, res, next) => {
     }
 }
 
-export default checkApiKey
+const checkAdminRol = ( req, res, next ) => {
+    const user = req.user
+    if (user.role == 1) {
+        next()
+    } else {
+        next(boom.unauthorized())
+    }
+}
+
+export { checkApiKey, checkAdminRol}

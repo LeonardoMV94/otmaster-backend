@@ -1,7 +1,9 @@
 import express from "express";
+
 import ClientesService from "./../services/clientes.service.js";
 import validatorHandler from './../middlewares/validator.handler.js'
 import {createClienteSchema, updateClienteSchema, getClienteByid} from "./../schemas/clientes.schema.js"
+import { checkAdminRol } from "./../middlewares/auth.handler.js";
 
 const router = express.Router();
 const service = new ClientesService();
@@ -69,7 +71,9 @@ router.put('/update/:rut', async (req, res,next) =>{
 
 });
 
-router.delete('/delete/:id', async (req, res,next) => {
+router.delete('/delete/:id', 
+    checkAdminRol,
+    async (req, res,next) => {
     try {
         const {id} = req.params;
         const mensaje = await service.delete(id);

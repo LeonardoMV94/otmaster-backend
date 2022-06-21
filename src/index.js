@@ -1,7 +1,7 @@
 import express from 'express';
 import routerApi from './routes/index.js';
 import {logErrors, errorHandler,boomErrorHandler, ormErrorHandler} from './middlewares/error.handler.js';
-import checkApiKey from './middlewares/auth.handler.js';
+import {checkApiKey} from './middlewares/auth.handler.js';
 import cors from 'cors';
 
 //inicializar
