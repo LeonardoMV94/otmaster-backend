@@ -45,11 +45,9 @@ router.post('/add/',
         }
         const cli = await service.create(clienteObj);
         res.status(200).json(cli);
-
     } catch (error) {
         next(error)
-    }
-    
+    }    
 })
 
 router.put('/update/:rut', async (req, res,next) =>{
