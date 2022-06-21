@@ -11,7 +11,7 @@ const checkApiKey = (req, res, next) => {
 
 const checkAdminRol = ( req, res, next ) => {
     const user = req.user
-    if (user.role == 1) {
+    if (user.role == 'admin') {
         next()
     } else {
         next(boom.unauthorized())

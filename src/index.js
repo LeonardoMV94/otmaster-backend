@@ -6,14 +6,14 @@ import cors from 'cors';
 
 //inicializar
 const app = express();
-const port = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 
 //settings
 app.use(express.json());
 
 app.use(cors());
 
-// auth
+// auth strategies
 import './utils/auth/index.js'
 
 // test
@@ -32,7 +32,7 @@ app.use(errorHandler);
 
 
 //port
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.clear()
     console.log('Servidor inicializado en puerto 8000');
 });
