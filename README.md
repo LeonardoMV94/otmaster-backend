@@ -16,9 +16,16 @@ npm run dev
 ```
 npm run start
 ```
-### Comands Docker Compose
+### Comands Docker Compose - require docker engine installed
+# service up mysql
+```
+docker-compose up -d mysql 
+```
+# service down mysql
 ```
 docker-compose stop mysql
-docker-compose run mysql 
 ```
+### Model Database
+![alt database-model](https://github.com/LeonardoMV94/otmaster-backend/blob/main/database-model.png?raw=true)
+
 ### - ./mysql_data:/var/lib/mysql
