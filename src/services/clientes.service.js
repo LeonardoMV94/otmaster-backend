@@ -23,9 +23,9 @@ class ClientesService {
      * @returns Array retorna arreglo de objetos 
      */
     async find() {
-        const clientes = await models.Cliente.findAll()
-        return clientes
-    }
+        const clientes = await models.Cliente.findAll();
+        return clientes;
+    };
 
     /**
      * Funcion que retorna un cliente por id
@@ -33,11 +33,11 @@ class ClientesService {
      * @returns Object retorna cliente || retorna error not found
      */
     async findById(id) {
-        const cliente = await models.Cliente.findByPk(id)
+        const cliente = await models.Cliente.findByPk(id);
         if (!cliente){
-            throw boom.notFound('user not found')
+            throw boom.notFound('cliente not found');
         }
-        return cliente
+        return cliente;
     };
 
     /**
@@ -47,9 +47,9 @@ class ClientesService {
      * @returns Object Retorna cliente actualizado
      */
     async update(rut, changes) {
-        const cliente = await this.findById(rut)
-        const rta = await cliente.update(changes)
-        return rta
+        const cliente = await this.findById(rut);
+        const rta = await cliente.update(changes);
+        return rta;
     };
 
     /**
@@ -58,9 +58,9 @@ class ClientesService {
      * @returns Object retorna objeto con id de la tabla eliminada
      */
     async delete(rut) {        
-        const cliente = await this.findById(rut)
+        const cliente = await this.findById(rut);
         await cliente.destroy();
-        return { rut }
+        return { rut };
     };
 }
 

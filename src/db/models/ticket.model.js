@@ -73,6 +73,14 @@ class Ticket extends Model{
             otherKey: 'repuestosIdRepuesto'
         })
         // TODO: faltan relaciones: colaboradores, clientes, dispositivos
+        /*
+        // JOIN foreign Key 
+        include : {
+            model: Cliente
+            // model: Colaborador,
+            // model: Dispositivo
+        }*/
+
     }
     static config(sequelize) {
         return {

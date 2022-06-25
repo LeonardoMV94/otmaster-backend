@@ -38,6 +38,7 @@ const ColaboradorSchema = {
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
     },
+
     // Fecha de creacion : createdAt attribute
     createdAt:{
         allowNull: false,

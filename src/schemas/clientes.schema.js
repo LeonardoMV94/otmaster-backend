@@ -1,7 +1,7 @@
 import Joi from 'joi';
 
-const rut_cliente = Joi.string().min(7).max(8)
-const nombre_cliente = Joi.string().min(3).max(30) ;
+const rut_cliente = Joi.string().min(7).max(8);
+const nombre_cliente = Joi.string().min(3).max(30);
 const appat_cliente = Joi.string().min(3).max(30);
 const apmat_cliente = Joi.string().min(3).max(30);
 const correo_cliente = Joi.string().email();
