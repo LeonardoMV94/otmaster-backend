@@ -1,5 +1,5 @@
 'use strict';
-import { userSchema, CLIENTE_TABLE} from '../models/cliente.model.js'
+import { ClienteSchema, CLIENTE_TABLE} from '../models/cliente.model.js'
 // TODO: crear tablas en sequelize y joi
 
 module.exports = {

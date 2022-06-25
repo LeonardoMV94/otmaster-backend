@@ -72,7 +72,13 @@ const TicketSchema = {
 
 class Ticket extends Model{
     static associate(){
-        //models
+        /*
+        // JOIN foreign Key 
+        include : {
+            model: Cliente
+            // model: Colaborador,
+            // model: Dispositivo
+        }*/
     }
     static config(sequelize) {
         return {

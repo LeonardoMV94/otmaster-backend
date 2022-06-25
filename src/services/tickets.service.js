@@ -1,6 +1,9 @@
 // import { MySqlConexion} from "./../libs/mysql.pool.js";
 // const con = await MySqlConexion();
 import boom from '@hapi/boom';
+import { Cliente } from '../db/models/cliente.model.js';
+import { Colaborador } from '../db/models/colaborador.model.js';
+import { Dispositivo } from '../db/models/dispositivo.model.js';
 import sequelize from '../libs/sequelize.js';
 
 const {models} = sequelize;
@@ -26,7 +29,15 @@ class TicketsService {
      * @returns {Object} Retorna todas las rows de la tabla TICKETS
      */
     async find(){
-        const tickets = await models.Ticket.findAll();
+        const tickets = await models.Ticket.findAll({
+
+            // JOIN foreign Key 
+            include : {
+                model: Cliente
+                // model: Colaborador,
+                // model: Dispositivo
+            }
+        });
         return tickets;
     };
     
