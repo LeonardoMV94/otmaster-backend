@@ -10,6 +10,6 @@ const validatorHandler = (schema,property) => {
         }
         next();
     }
-}
+};
 
 export default validatorHandler;

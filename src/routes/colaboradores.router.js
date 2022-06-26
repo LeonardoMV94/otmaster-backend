@@ -1,7 +1,7 @@
 import express from "express";
-import ColaboradoresService from '../services/colaboradores.service.js'
-import validatorHandler from './../middlewares/validator.handler.js'
-import { createColaboradorSchema, updateColaboradoSchema, getColaboradorSchema } from './../schemas/colaboradores.schema.js'
+import ColaboradoresService from '../services/colaboradores.service.js';
+import validatorHandler from './../middlewares/validator.handler.js';
+import { createColaboradorSchema, updateColaboradoSchema, getColaboradorSchema } from './../schemas/colaboradores.schema.js';
 
 const router = express.Router();
 const service = new ColaboradoresService();
@@ -9,9 +9,9 @@ const service = new ColaboradoresService();
 router.get('/', async(req, res,next) => {
     try {        
         const colab = await service.find();
-        res.json(colab)
+        res.json(colab);
     } catch (error) {
-        next(error)
+        next(error);
     }     
 });
 
@@ -28,7 +28,7 @@ router.get('/:rut_colaborador',
     }
 );
 
-router.post('/',
+router.post('/add/',
     validatorHandler(createColaboradorSchema, 'body'),
     async (req, res, next) => {
         try {
@@ -56,7 +56,7 @@ router.patch('/:id',
     }
 );
 
-router.delete('/:id',
+router.delete('/delete/:id',
     validatorHandler(getColaboradorSchema, 'params'),
     async (req, res, next) => {
         try {

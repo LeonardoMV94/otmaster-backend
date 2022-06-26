@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({
     path: __dirname + './../../.env'
-})
+});
 
 /**
  * Esta funcion es la configuracion de la pool de mysql y usa variables de entorno del archivo .env
@@ -36,4 +36,4 @@ const MySqlConexion = async () => {
     return pool;
 }
 
-export {MySqlConexion}
+export {MySqlConexion};

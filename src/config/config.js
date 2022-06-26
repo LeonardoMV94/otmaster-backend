@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({
     path: __dirname + './../../.env'
-})
+});
 
 const config = { 
     env:         process.env.NODE_ENV || 'dev',
@@ -20,4 +20,4 @@ const config = {
     jwtSecret:   process.env.JWT_SECRET
 }
 
-export default config
+export default config;
