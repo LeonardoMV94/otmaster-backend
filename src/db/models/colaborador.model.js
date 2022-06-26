@@ -26,7 +26,7 @@ const ColaboradorSchema = {
         type: DataTypes.STRING,
     },
     // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Roles'.
-    rolesIdRol: {
+    roles_Id_rol: {
         field: 'roles_id_rol',
         allowNull: false,
         type: DataTypes.INTEGER,
@@ -57,7 +57,13 @@ const ColaboradorSchema = {
 class Colaborador extends Model{
     static associate(models){
         //models
-        this.belongsTo( models.Rol, { as : 'roles' } )
+        this.belongsTo( models.Rol, { as : 'roles' } );
+
+        //models
+        this.hasMany(models.Ticket, {
+            as: 'tickets',
+            foreignKey: 'colaboradores_ID_colaborador'
+        });
     }
     static config(sequelize) {
         return {

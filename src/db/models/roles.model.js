@@ -25,7 +25,7 @@ const RolesSchema = {
         field: 'updated_at',
         defaultValue: Sequelize.NOW
     }
-}
+};
 
 class Rol extends Model{
     static associate(models){
@@ -33,7 +33,7 @@ class Rol extends Model{
         this.hasMany(models.Colaborador, {
             as: 'colaboradores',
             foreignKey: 'roles_id_rol'
-        })
+        });
     }
     static config(sequelize) {
         return {
@@ -41,7 +41,7 @@ class Rol extends Model{
             tableName: ROLES_TABLE,
             modelName: 'Rol',
             timestamp: false
-        }
+        };
     }
 }
 
@@ -49,4 +49,4 @@ export {
     ROLES_TABLE,
     RolesSchema,
     Rol
-}
+};

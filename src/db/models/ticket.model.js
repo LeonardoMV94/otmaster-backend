@@ -1,4 +1,7 @@
 import {Model, DataTypes, Sequelize} from 'sequelize';
+import { COLABORADORES_TABLE } from './colaborador.model';
+import { CLIENTES_TABLE } from './cliente.model';
+import { DISPOSITIVOS_TABLE } from './dispositivo.model'
 
 const TICKETS_TABLE = 'tickets';
 
@@ -26,28 +29,37 @@ const TicketSchema = {
         type: DataTypes.INTEGER
     },
     dispositivos_ID_dispositivo: {
+        //field: 'dispositivos_ID_dispositivo',
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-            model: 'dispositivos',
+            model: DISPOSITIVOS_TABLE,
             key: 'ID_dispositivo',
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
     },
     clientes_ID_cliente: {
+        //field: 'clientes_ID_cliente',
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-            model: 'clientes',
+            model: CLIENTES_TABLE,
             key: 'rut_cliente',
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
     },
     colaboradores_ID_colaborador: {
+        //field: 'colaboradores_ID_colaborador',
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-            model: 'colaboradores',
+            model: COLABORADORES_TABLE,
             key: 'rut_colaborador',
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
     },
     createdAt:{
         allowNull: false,
@@ -71,8 +83,17 @@ class Ticket extends Model{
             through: models.Repuestos_has_tickets,
             foreignKey: 'ticketsIdTicket',
             otherKey: 'repuestosIdRepuesto'
-        })
-        // TODO: faltan relaciones: colaboradores, clientes, dispositivos
+        });
+
+        // Relcacion muchos a uno Ticket --> Colaborador
+        this.belongsTo( models.Colaborador, { as : 'colaboradores' } );
+
+        // Relcacion muchos a uno Ticket --> Dispositivo
+        this.belongsTo( models.Dispositivo, { as : 'dispositivos' } );
+
+        // Relcacion muchos a uno Ticket --> Cliente
+        this.belongsTo( models.Cliente, { as : 'clientes' } );
+
         /*
         // JOIN foreign Key 
         include : {

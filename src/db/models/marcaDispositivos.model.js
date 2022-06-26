@@ -28,8 +28,12 @@ const MarcaDispositivoSchema = {
 }
 
 class MarcaDispositivo extends Model{
-    static associate(){
+    static associate(models){
         //models
+        this.hasMany(models.Dispositivo, {
+            as: 'dispositivos',
+            foreignKey: 'marcas_dispositivos_ID_marcas'
+        });
     }
     static config(sequelize) {
         return {

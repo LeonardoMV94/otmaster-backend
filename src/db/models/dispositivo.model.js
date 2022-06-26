@@ -1,4 +1,6 @@
 import {Model, DataTypes, Sequelize} from 'sequelize';
+import { MARCAS_DISPOSITIVOS_TABLE } from './marcaDispositivos.model';
+import { TIPOS_DISPOSITIVOS_TABLE } from './tiposDispositivos.model';
 
 const DISPOSITIVOS_TABLE = 'dispositivos';
 
@@ -22,7 +24,7 @@ const DispositivoSchema = {
         type: DataTypes.INTEGER,
         // Foreign Key implementada con 'references', No probado que funcione (12-06-2022).
         references: { 
-            model: 'marcas_dispositivos', 
+            model: MARCAS_DISPOSITIVOS_TABLE, 
             key: 'id_marca',
         },
     },
@@ -30,7 +32,7 @@ const DispositivoSchema = {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-            model: 'tipos_dispositivos',
+            model: TIPOS_DISPOSITIVOS_TABLE,
             key: 'id_tipo',
         }
     },
@@ -49,8 +51,13 @@ const DispositivoSchema = {
 }
 
 class Dispositivo extends Model{
-    static associate(){
+    static associate(models){
+        
         //models
+        this.hasMany(models.Ticket, {
+            as: 'tickets',
+            foreignKey: 'dispositivos_ID_dispositivo'
+        });
     }
     static config(sequelize) {
         return {
