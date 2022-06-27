@@ -17,12 +17,12 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
+    await queryInterface.createTable(ROLES_TABLE, RolesSchema)
     await queryInterface.createTable(CLIENTE_TABLE, ClienteSchema)
     await queryInterface.createTable(COLABORADORES_TABLE, ColaboradorSchema)
-    await queryInterface.createTable(ROLES_TABLE, RolesSchema)
-    await queryInterface.createTable(DISPOSITIVOS_TABLE, DispositivoSchema)
     await queryInterface.createTable(MARCAS_DISPOSITIVOS_TABLE, MarcaDispositivoSchema)
     await queryInterface.createTable(TIPOS_DISPOSITIVOS_TABLE, TipoDispositivoSchema)
+    await queryInterface.createTable(DISPOSITIVOS_TABLE, DispositivoSchema)
     await queryInterface.createTable(TICKETS_TABLE, TicketSchema)
     await queryInterface.createTable(REPUESTOS_TABLE, RepuestoSchema)
     await queryInterface.createTable(REPUESTOS_HAS_TICKETS_TABLE, Repuestos_has_tickets_Schema)
