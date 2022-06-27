@@ -33,7 +33,7 @@ const Repuestos_has_tickets_Schema = {
         field: 'updated_at',
         defaultValue: Sequelize.NOW
     }
-}
+};
 
 class Repuestos_has_tickets extends Model{
     static associate(){
@@ -45,7 +45,7 @@ class Repuestos_has_tickets extends Model{
             tableName: REPUESTOS_HAS_TICKETS_TABLE,
             modelName: 'Repuestos_has_tickets',
             timestamp: false
-        }
+        };
     }
 }
 
@@ -53,4 +53,4 @@ export {
     REPUESTOS_HAS_TICKETS_TABLE,
     Repuestos_has_tickets_Schema,
     Repuestos_has_tickets
-}
+};

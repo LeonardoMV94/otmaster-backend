@@ -1,18 +1,18 @@
-import sequelize from 'sequelize'
-import boom from '@hapi/boom'
+import sequelize from 'sequelize';
+import boom from '@hapi/boom';
 const { ValidationError} = sequelize;
 
 const logErrors = (err, req, res, next) => {
     console.log(`${err.message}`);
-    next(err)
-}
+    next(err);
+};
 
 const errorHandler = (err, req, res, next) => {
     res.status(500).json({
         message: err.message,
         stack: err.stack,
     });
-}
+};
 
 const boomErrorHandler = (err, req, res, next) => {
     if(err.isBoom) {
@@ -20,7 +20,7 @@ const boomErrorHandler = (err, req, res, next) => {
         res.status(output.statusCode).json(output.payload);
     }
     next(err);
-}
+};
 
 const ormErrorHandler = (err, req, res, next) =>{
     if(err instanceof ValidationError){
@@ -31,7 +31,7 @@ const ormErrorHandler = (err, req, res, next) =>{
         });
     }
     next(err);
-}
+};
 
 
 export {
@@ -39,4 +39,4 @@ export {
     errorHandler,
     boomErrorHandler,
     ormErrorHandler
-}
+};

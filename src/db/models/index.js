@@ -6,7 +6,7 @@ import { MarcaDispositivo, MarcaDispositivoSchema } from './marcaDispositivos.mo
 import { TipoDispositivo, TipoDispositivoSchema } from './tiposDispositivos.model.js';
 import { Ticket,TicketSchema } from './ticket.model.js';
 import { Repuesto, RepuestoSchema } from './repuestos.model.js';
-import { Repuestos_has_tickets, Repuestos_has_tickets_Schema } from './repuestos_has_tickets.model.js'
+import { Repuestos_has_tickets, Repuestos_has_tickets_Schema } from './repuestos_has_tickets.model.js';
 
 // Associacion JOIN {Ticket : Cliente}
 //Ticket.belongsTo(Cliente, {foreignKey: "clientes_ID_cliente"});
@@ -32,8 +32,8 @@ const setupModels = (sequelize) => {
     Repuestos_has_tickets.init(Repuestos_has_tickets_Schema, Repuestos_has_tickets.config(sequelize));
 
     // aqui van las asociaciones
-    Rol.associate(sequelize.models)
-    Colaborador.associate(sequelize.models)
-}
+    Rol.associate(sequelize.models);
+    Colaborador.associate(sequelize.models);
+};
 
 export default setupModels;
