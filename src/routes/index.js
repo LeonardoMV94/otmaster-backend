@@ -24,6 +24,12 @@ const routerApi = (app) => {
     router.use( '/roles', passport.authenticate('jwt', { session: false } ), checkAdminRol, rolesRouter );
     // router.use( '/colaboradores', passport.authenticate('jwt', { session: false } ), checkAdminRol, colaboradoresRouter );
     router.use( '/colaboradores',  colaboradoresRouter );
+    // router.use( '/repuestos', passport.authenticate('jwt', { session: false } ), repuestosRouter );
+    router.use( '/repuestos', repuestosRouter);
+    // router.use( '/tiposDispositivos', passport.authenticate('jwt', { session: false } ), tiposDispositivosRouter );
+    router.use( '/tiposDispositivos', tiposDispositivosRouter);
+    // router.use( '/marcasDispositivos', passport.authenticate('jwt', { session: false } ), marcasDispositivosRouter );
+    router.use( '/marcasDispositivos', marcasDispositivosRouter);
     router.use( '/dispositivos', passport.authenticate('jwt', { session: false } ), dispositivosRouter );
     router.use( '/tickets', passport.authenticate('jwt', { session: false } ), ticketsRouter );
 }
