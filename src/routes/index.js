@@ -6,6 +6,9 @@ import colaboradoresRouter from './colaboradores.router.js';
 import dispositivosRouter from './dispositivos.router.js';
 import ticketsRouter from './tickets.router.js';
 import rolesRouter from './roles.router.js';
+import repuestosRouter from './repuestos.router';
+import tiposDispositivosRouter from './tiposDispositivos.router';
+import marcasDispositivosRouter from './marcasDispositivos.router';
 import authRouter from './auth.router.js';
 
 import { checkAdminRol } from './../middlewares/auth.handler.js';
