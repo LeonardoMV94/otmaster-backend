@@ -23,7 +23,9 @@ class ClientesService {
      * @returns Array retorna arreglo de objetos 
      */
     async find() {
-        const clientes = await models.Cliente.findAll();
+        const clientes = await models.Cliente.findAll( {
+            include: ['tickets']
+        });
         return clientes;
     };
 

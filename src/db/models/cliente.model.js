@@ -44,8 +44,12 @@ const ClienteSchema = {
 }
 
 class Cliente extends Model{
-    static associate(){
+    static associate(models){
         //models
+        this.hasMany(models.Ticket, {
+            as: 'tickets',
+            foreignKey: 'clientes_ID_cliente'
+        })
     }
     static config(sequelize) {
         return {

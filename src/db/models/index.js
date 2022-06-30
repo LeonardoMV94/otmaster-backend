@@ -34,6 +34,8 @@ const setupModels = (sequelize) => {
     // aqui van las asociaciones
     Rol.associate(sequelize.models);
     Colaborador.associate(sequelize.models);
+    Ticket.associate(sequelize.models);
+    Cliente.associate(sequelize.models);
 };
 
 export default setupModels;

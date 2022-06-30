@@ -30,12 +30,14 @@ class TicketsService {
      */
     async find(){
         const tickets = await models.Ticket.findAll(
-        //{
+            
+        {
+            include: ['ticket_cliente']
             // JOIN foreign Key 
             //include : ['items']
                 // model: Colaborador,
                 // model: Dispositivo            
-        //}
+        }
         );
         return tickets;
     };

@@ -185,5 +185,6 @@ $RECYCLE.BIN/
 # Docker volumes
 postgres_data
 mysql_data
+mysql_data_bckp
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node,Linux,macOS,Windows

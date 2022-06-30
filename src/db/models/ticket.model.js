@@ -72,15 +72,10 @@ class Ticket extends Model{
             foreignKey: 'ticketsIdTicket',
             otherKey: 'repuestosIdRepuesto'
         })
-        // TODO: faltan relaciones: colaboradores, clientes, dispositivos
-        /*
-        // JOIN foreign Key 
-        include : {
-            model: Cliente
-            // model: Colaborador,
-            // model: Dispositivo
-        }*/
+        this.belongsTo( models.Cliente, { as : 'ticket_cliente' } )
 
+        // TODO: faltan relaciones: colaboradores, clientes, dispositivos
+        
     }
     static config(sequelize) {
         return {

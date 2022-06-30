@@ -18,7 +18,7 @@ const routerApi = (app) => {
     //endpoints
     router.use( '/auth', authRouter );
     router.use( '/clientes', passport.authenticate('jwt', { session: false } ), clientesRouter );
-    router.use( '/roles', passport.authenticate('jwt', { session: false } ), checkAdminRol, rolesRouter );
+    router.use( '/roles',  passport.authenticate('jwt', { session: false } ), checkAdminRol, rolesRouter );
     // router.use( '/colaboradores', passport.authenticate('jwt', { session: false } ), checkAdminRol, colaboradoresRouter );
     router.use( '/colaboradores',  colaboradoresRouter );
     router.use( '/dispositivos', passport.authenticate('jwt', { session: false } ), dispositivosRouter );
