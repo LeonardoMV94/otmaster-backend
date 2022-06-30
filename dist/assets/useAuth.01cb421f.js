@@ -1,0 +1,1 @@
+import{t as e,S as t}from"./index.037a1abe.js";const n=()=>({checkAuthStatus:async()=>await t().dispatch("auth/checkAuthentication"),loginUser:async s=>await t().dispatch("auth/signInUser",s),logout:()=>{t().commit("auth/logout")},authStatus:e(()=>t().getters["auth/currentState"]),username:e(()=>t().getters["auth/username"])});export{n as u};
