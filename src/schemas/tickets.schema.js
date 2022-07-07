@@ -5,7 +5,7 @@ const diagnostico_ticket = Joi.string().min(3).max(300);
 const resolucion_ticket = Joi.string().min(3).max(300);
 const problema_ticket = Joi.string().min(3).max(300);
 // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Estado_tickets'.
-// const estado_tickets_ID_estado = Joi.number().min(3).max(30);
+// const estado_tickets_ID_estado = Joi.number().min(1).max(5);
 // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Dispositivos'.
 // const dispositivos_ID_dispositivo = Joi.number().min(8);
 // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Clientes'.
@@ -17,9 +17,9 @@ const problema_ticket = Joi.string().min(3).max(300);
 
 const createTicketSchema = Joi.object({
     ID_ticket: ID_ticket.required(),    
+    problema_ticket: problema_ticket.required(),
     diagnostico_ticket: diagnostico_ticket,
     resolucion_ticket: resolucion_ticket,
-    problema_ticket: problema_ticket.required()
     // estado_tickets_ID_estado: estado_tickets_ID_estado.required(),
     // dispositivos_ID_dispositivo: dispositivos_ID_dispositivo.required(),
     // clientes_ID_cliente: clientes_ID_cliente.required(),

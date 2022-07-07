@@ -41,14 +41,14 @@ router.post('/add/',
     }
 );
 
-router.patch('/:id',
+router.patch('/:rut_colaborador',
     validatorHandler(getColaboradorSchema, 'params'),
     validatorHandler(updateColaboradoSchema, 'body'),
     async (req, res, next) => {
         try {
-            const { id } = req.params;
+            const { rut_colaborador } = req.params;
             const body = req.body;
-            const category = await service.update(id, body);
+            const category = await service.update(rut_colaborador, body);
             res.json(category);
         } catch (error) {
             next(error);
@@ -56,13 +56,13 @@ router.patch('/:id',
     }
 );
 
-router.delete('/delete/:id',
+router.delete('/delete/:rut_colaborador',
     validatorHandler(getColaboradorSchema, 'params'),
     async (req, res, next) => {
         try {
-            const { id } = req.params;
-            await service.delete(id);
-            res.status(201).json({id});
+            const { rut_colaborador } = req.params;
+            await service.delete(rut_colaborador);
+            res.status(201).json({rut_colaborador});
         } catch (error) {
             next(error);
         }

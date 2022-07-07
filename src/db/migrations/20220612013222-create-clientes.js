@@ -28,6 +28,7 @@ module.exports = {
     await queryInterface.createTable(REPUESTOS_HAS_TICKETS_TABLE, Repuestos_has_tickets_Schema)
 
     //inserts 
+    
 
   },
 

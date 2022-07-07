@@ -1,5 +1,4 @@
 import express from "express";
-// es probable que no valla la extencion '.js' al final del archivo 'tickets.services.js'
 import TicketsService from "../services/tickets.service.js";
 import validatorHandler from "../middlewares/validator.handler.js";
 import {createTicketSchema, updateTicketSchema, getTicketByid} from "../schemas/tickets.schema.js";
@@ -17,10 +16,12 @@ router.get('/', async(req,res,next) => {
     }
 });
 
-router.get('/:id', async (req,res,next) => {    
+router.get('/:id_ticket', 
+    validatorHandler(getTicketByid, 'params'),
+    async (req,res,next) => {    
     try {
-        const {id} = req.params;
-        const results = await service.findById(id);
+        const {id_ticket} = req.params;
+        const results = await service.findById(id_ticket);
         res.status(200).json(results);
         // if (results.length > 0) {
         // } else {
@@ -54,7 +55,9 @@ router.post('/add/',
     }
 });
 
-router.put('/update/:rut', async (req, res,next) =>{
+router.put('/update/:rut', 
+    validatorHandler(updateTicketSchema, 'body'),
+    async (req, res,next) =>{
     try {
         const {id} = req.params;
         const ticketObj = {

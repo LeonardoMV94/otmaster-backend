@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+mysql_data
+mysql_data_bckp
+.env
+.gitignore
+.git

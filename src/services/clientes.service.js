@@ -48,8 +48,8 @@ class ClientesService {
      * @param {Object} changes Cambios parciales de cliente
      * @returns Object Retorna cliente actualizado
      */
-    async update(rut, changes) {
-        const cliente = await this.findById(rut);
+    async update(rut_cliente, changes) {
+        const cliente = await this.findById(rut_cliente);
         const rta = await cliente.update(changes);
         return rta;
     };

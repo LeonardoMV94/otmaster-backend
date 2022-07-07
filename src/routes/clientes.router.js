@@ -19,15 +19,13 @@ router.get('/', async(req,res,next) => {
     }       
 });
 
-router.get('/:id', async (req,res,next) => {    
+router.get('/:rut_cliente', 
+    validatorHandler(getClienteByid, 'params'),
+    async (req,res,next) => {    
     try {
-        const {id} = req.params;
-        const results = await service.findById(id);
+        const {rut_cliente} = req.params;
+        const results = await service.findById(rut_cliente);
         res.status(200).json(results);
-        // if (results.length > 0) {
-        // } else {
-        //     res.status(404).json({mensaje: "no existe el cliente"})
-        // }
     } catch (error) {
         next(error);
     }
@@ -54,9 +52,11 @@ router.post('/add/',
 })
 
 
-router.put('/update/:rut', async (req, res,next) =>{
+router.put('/update/:rut', 
+    validatorHandler(updateClienteSchema, 'body'),
+    async (req, res,next) =>{
     try {
-        const {rut} = req.params;
+        const {rut_cliente} = req.params;
         const clienteObj = {
             nombre_cliente: req.body.nombre_cliente,
             appat_cliente: req.body.appat_cliente,
@@ -64,7 +64,7 @@ router.put('/update/:rut', async (req, res,next) =>{
             correo_cliente: req.body.correo_cliente,
             tel_cliente: req.body.tel_cliente
         };
-        const mensaje = await service.update(rut,clienteObj);
+        const mensaje = await service.update(rut_cliente,clienteObj);
         res.status(200).json(mensaje);
     } catch (error) {
         next(error);
