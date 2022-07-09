@@ -1,25 +1,7 @@
-version: '3.3'
+version: "3.9"
 
 services:
-  postgres:
-    image: postgres:13
-    environment:
-      - POSTGRES_DB=otmaster
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=toor
-    ports:
-      - 5432:5432
-    volumes:
-      - ./postgres_data:/var/lib/postgresql/data
-
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@mail.com
-      - PGADMIN_DEFAULT_PASSWORD=root
-    ports:
-      - 5050:80
-
+  # MYSQL
   mysql:
     image: mysql:5
     environment:
@@ -30,7 +12,8 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./mysql_data:/var/lib/mysql
+      #- ./mysql_data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -39,3 +22,22 @@ services:
       - PMA_HOST=mysql
     ports:
       - 8080:80
+
+  # APP NODE
+  ot-master:
+    build: .
+    environment:
+      - BD_SYSTEM=mysql
+      - DB_HOST=mysql
+      - BD_PORT=3306
+      - BD_NAME=otmaster
+      - BD_USER=root
+      - BD_PASSWORD=toor
+      - JWT_SECRET=luis
+    ports:
+      - "8000:8000"
+    links:
+      - mysql
+
+volumes:
+  mysql-data:
