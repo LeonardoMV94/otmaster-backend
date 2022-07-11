@@ -4,6 +4,7 @@ const MARCAS_DISPOSITIVOS_TABLE = 'marcas_dispositivos';
 
 const MarcaDispositivoSchema = {
     ID_marca: {
+        field: 'id_marca',
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,

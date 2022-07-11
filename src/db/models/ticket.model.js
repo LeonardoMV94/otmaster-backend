@@ -30,7 +30,7 @@ const TicketSchema = {
         type: DataTypes.INTEGER,
         references: {
             model: 'dispositivos',
-            key: 'ID_dispositivo',
+            key: 'id_dispositivo',
         }
     },
     clientes_ID_cliente: {

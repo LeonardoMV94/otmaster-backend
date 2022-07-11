@@ -1,14 +1,14 @@
 FROM node:16
-ENV NODE_ENV=production \
+ENV NODE_ENV=development \
     PORT=10000
 
 WORKDIR /home/app
 COPY package*.json ./
-RUN npm install -g sequelize-cli@6.4.1
 RUN npm ci
 
 COPY . .
 EXPOSE 10000
+#RUN npm run migrations:run
 
 CMD ["npm","start"]
 

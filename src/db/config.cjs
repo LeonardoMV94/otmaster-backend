@@ -3,16 +3,16 @@ const { config } = require('../config/config-common.cjs');
 module.exports = {
     development: {
         url: config.URI,
-        dialect: config.dbDialect,
+        dialect: 'postgres',
     },
     production: {
         url: config.URI,
-        dialect: 'mysql',
+        dialect: 'postgres',
         logging: true,
-        dialectOptions: {
-            ssl: {
-                rejectUnauthorized: false
-            }
-        }
+        // dialectOptions: {
+        //     ssl: {
+        //         rejectUnauthorized: false
+        //     }
+        // }
     }
 }

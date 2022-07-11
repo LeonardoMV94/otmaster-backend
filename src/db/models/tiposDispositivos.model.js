@@ -4,6 +4,7 @@ const TIPOS_DISPOSITIVOS_TABLE = 'tipos_dispositivos';
 
 const TipoDispositivoSchema = {
     ID_tipo: {
+        field: 'id_tipo',
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,

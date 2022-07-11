@@ -12,7 +12,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
@@ -23,18 +23,16 @@ services:
       - 5050:80
   
   # APP NODE
-  ot-master:
+  otmaster:
     build: .
     environment:
       - BD_SYSTEM=postgres
-      - DB_HOST=postgres
-      - BD_PORT=5432
-      - BD_NAME=otmaster
-      - BD_USER=root
-      - BD_PASSWORD=toor
+      - DATABASE_URL=postgresql://root:toor@postgres:5432/otmaster
       - JWT_SECRET=luis
     ports:
-      - "8000:8000"
+      - "8000:10000"
+    #command: >
+    #  sh -c "npx sequelize-cli db:migrate && npm start"
     links:
       - postgres
 volumes:

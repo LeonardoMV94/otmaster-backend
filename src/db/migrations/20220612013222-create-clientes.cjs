@@ -129,6 +129,7 @@ module.exports = {
     await queryInterface.createTable('marcas_dispositivos', 
     {
         ID_marca: {
+            field: 'id_marca',
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -153,6 +154,7 @@ module.exports = {
     await queryInterface.createTable('tipos_dispositivos', 
     {
         ID_tipo: {
+            field: 'id_tipo',
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -221,6 +223,7 @@ module.exports = {
     await queryInterface.createTable('repuestos', 
     {
         ID_repuesto: {
+            field: 'id_repuesto',
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -246,6 +249,7 @@ module.exports = {
     await queryInterface.createTable('tickets', 
     {
         ID_ticket: {
+            field: 'id_ticket',
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,

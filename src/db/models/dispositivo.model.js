@@ -4,6 +4,7 @@ const DISPOSITIVOS_TABLE = 'dispositivos';
 
 const DispositivoSchema = {
     id_dispositivo: {
+        field: 'id_dispositivo',
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
@@ -18,16 +19,13 @@ const DispositivoSchema = {
         type: DataTypes.STRING,
     },
     marcas_dispositivos_ID_marcas: {
-        allowNull: false,
         type: DataTypes.INTEGER,
-        // Foreign Key implementada con 'references', No probado que funcione (12-06-2022).
         references: { 
             model: 'marcas_dispositivos', 
             key: 'id_marca',
         },
     },
     tipos_dispositivos_ID_tipos: {
-        allowNull: false,
         type: DataTypes.INTEGER,
         references: {
             model: 'tipos_dispositivos',
