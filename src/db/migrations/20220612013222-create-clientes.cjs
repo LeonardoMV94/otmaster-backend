@@ -197,7 +197,8 @@ module.exports = {
         },
         marcas_dispositivos_ID_marcas: {
             field: 'marcas_dispositivos_id_marcas',
-            type: DataTypes.INTEGER,            
+            type: DataTypes.INTEGER,
+            unique:true,            
             references: { 
                 model: 'marcas_dispositivos', 
                 key: 'id_marca',
@@ -205,7 +206,8 @@ module.exports = {
         },
         tipos_dispositivos_ID_tipos: {
             field: 'tipos_dispositivos_id_tipos',
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER,            
+            unique:true,    
             references: {
                 model: 'tipos_dispositivos',
                 key: 'id_tipo',
