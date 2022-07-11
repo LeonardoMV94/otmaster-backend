@@ -158,6 +158,7 @@ module.exports = {
             field: 'roles_id_rol',
             foreignKey: true,
             type: DataTypes.INTEGER,
+            allowNull: false,
             references: { 
                 model: 'roles', 
                 key: 'id_rol',
