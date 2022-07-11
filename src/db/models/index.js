@@ -8,17 +8,6 @@ import { Ticket,TicketSchema } from './ticket.model.js';
 import { Repuesto, RepuestoSchema } from './repuestos.model.js';
 import { Repuestos_has_tickets, Repuestos_has_tickets_Schema } from './repuestos_has_tickets.model.js';
 
-// Associacion JOIN {Ticket : Cliente}
-//Ticket.belongsTo(Cliente, {foreignKey: "clientes_ID_cliente"});
-//Cliente.hasMany(Ticket, {foreignKey: "clientes_ID_cliente"});
-// Associacion JOIN {Ticket : Colaborador}
-// Ticket.belongsTo(Colaborador, {foreignKey: "colaboradores_ID_colaborador"});
-// Colaborador.hasMany(Ticket, {foreignKey: "colaboradores_ID_colaborador"});
-// Associacion JOIN {Ticket : Colaborador}
-// Ticket.belongsTo(Dispositivo, {foreignKey: "dispositivos_ID_dispositivo"});
-// Dispositivo.hasMany(Ticket, {foreignKey: "dispositivos_ID_dispositivo"});
-
-
 const setupModels = (sequelize) => {
     //aqui van todos los modelos
     Cliente.init(ClienteSchema, Cliente.config(sequelize));

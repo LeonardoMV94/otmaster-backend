@@ -10,13 +10,10 @@ dotenv.config({
 });
 
 const config = { 
-    env:         process.env.NODE_ENV || 'dev',
-    dbSystem:    process.env.BD_SYSTEM,
-    dbName:      process.env.BD_NAME,
-    dbHost:      process.env.DB_HOST,
-    dbPort:      process.env.BD_PORT || 3306,
-    dbUser:      process.env.BD_USER,
-    dbPass:      process.env.BD_PASSWORD,
+    env:         process.env.NODE_ENV || 'development',
+    dbDialect:   process.env.BD_SYSTEM,
+    isProd:      process.env.NODE_ENV === 'production',
+    URI:         process.env.DATABASE_URL,
     jwtSecret:   process.env.JWT_SECRET
 }
 

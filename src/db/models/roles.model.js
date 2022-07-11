@@ -12,6 +12,7 @@ const RolesSchema = {
     nombre_rol: {
         allowNull: false,
         type: DataTypes.STRING,
+        unique: true
     },
     createdAt:{
         allowNull: false,

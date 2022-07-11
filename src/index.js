@@ -44,7 +44,7 @@ app.use(errorHandler);
 //port
 app.listen(PORT, () => {
     console.clear()
-    console.log('Servidor inicializado en puerto 8000');
+    console.log(`Servidor inicializado en puerto ${PORT}`);
 });
 
 // video https://www.youtube.com/watch?v=zsnHIlsUPSU

@@ -2,22 +2,29 @@ import Sequelize from 'sequelize';
 import setupModels from './../db/models/index.js';
 import config from '../config/config.js';
 
-const USER      = encodeURIComponent(config.dbUser);
-const PASSWORD  = encodeURIComponent(config.dbPass);
+const options = {
+    dialect:`${config.dbDialect}`,
+    logging: config.isProd ? false : true
+}
 
-const URI = `${config.dbSystem}://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
+if (config.isProd) {
+    options.dialectOptions = {
+        ssl: {
+            rejectUnauthorized: false
+        }
+    }
+}
 
 
 // https://sequelize.org/docs/v6/getting-started/
 
-const sequelize = new Sequelize( URI, {
-    dialect:`${config.dbSystem}`,
-    logging: false
-});
+const sequelize = new Sequelize( config.URI, options);
 
 setupModels(sequelize);
 
 // no se debe usar en produccion
-sequelize.sync();
+// if(!config.isProd){
+//     sequelize.sync()
+// }
 
 export default sequelize;
