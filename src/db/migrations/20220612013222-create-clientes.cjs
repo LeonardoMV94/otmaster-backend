@@ -53,7 +53,7 @@ module.exports = {
             field: 'updated_at',
             defaultValue: new Date()
         }
-    })
+    }, { underscored: true})
     await queryInterface.createTable('tipos_dispositivos', 
     {
         ID_tipo: {
@@ -79,10 +79,10 @@ module.exports = {
             field: 'updated_at',
             defaultValue: new Date()
         }
-    })
+    }, { underscored: true})
     await queryInterface.createTable('marcas_dispositivos', 
     {
-        ID_marca: {
+        id_marca: {
             field: 'id_marca',
             allowNull: false,
             primaryKey: true,
@@ -104,7 +104,7 @@ module.exports = {
             type: DataTypes.DATE,
             field: 'updated_at',
             defaultValue: new Date()}
-    })
+    }, { underscored: true})
     await queryInterface.createTable('roles', 
     {
         id_rol: {
@@ -130,7 +130,7 @@ module.exports = {
             field: 'updated_at',
             defaultValue: new Date()
         }
-    })
+    }, { underscored: true})
     await queryInterface.createTable('colaboradores', 
     {
         rut_colaborador: {
@@ -177,7 +177,7 @@ module.exports = {
             field: 'updated_at',
             defaultValue: new Date()
         }
-    });
+    }, { underscored: true});
     await queryInterface.createTable('dispositivos', 
     {
         id_dispositivo: {
@@ -195,7 +195,7 @@ module.exports = {
             allowNull: false,
             type: DataTypes.STRING,
         },
-        marcas_dispositivos_ID_marcas: {
+        marcasDispositivosIdMarcas: {
             field: 'marcas_dispositivos_id_marcas',
             type: DataTypes.INTEGER,
             unique:true,            
@@ -204,7 +204,7 @@ module.exports = {
                 key: 'id_marca',
             },
         },
-        tipos_dispositivos_ID_tipos: {
+        tiposDispositivosIdTipos: {
             field: 'tipos_dispositivos_id_tipos',
             type: DataTypes.INTEGER,            
             unique:true,    
@@ -225,7 +225,7 @@ module.exports = {
             field: 'updated_at',
             defaultValue: new Date()
         }
-    })
+    }, { underscored: true})
     await queryInterface.createTable('tickets', 
     {
         ID_ticket: {
@@ -284,7 +284,7 @@ module.exports = {
             field: 'updated_at',
             defaultValue: new Date()
         }
-    })    
+    }, { underscored: true})    
     await queryInterface.createTable('repuestos', 
     {
         ID_repuesto: {
@@ -342,7 +342,7 @@ module.exports = {
             field: 'updated_at',
             defaultValue: new Date()
         }
-    })
+    }, { underscored: true } )
     },
 
   async down (queryInterface) {
