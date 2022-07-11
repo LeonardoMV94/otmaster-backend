@@ -9,7 +9,7 @@
 // import { Repuestos_has_tickets_Schema, REPUESTOS_HAS_TICKETS_TABLE } from '../models/repuestos_has_tickets.model.js';
 
 module.exports = {
-  async up (queryInterface, DataTypes, Sequelize) {
+  async up (queryInterface, DataTypes) {
 
     await queryInterface.createTable('roles', 
     {
@@ -28,13 +28,13 @@ module.exports = {
             allowNull: false,
             type: DataTypes.DATE,
             field: 'created_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         },
         updatedAt: {
             allowNull: false,
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             field: 'updated_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         }
     })
 
@@ -70,13 +70,13 @@ module.exports = {
             allowNull: false,
             type: DataTypes.DATE,
             field: 'created_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         },
         updatedAt: {
             allowNull: false,
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             field: 'updated_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         }
     })
     await queryInterface.createTable('colaboradores', 
@@ -104,7 +104,7 @@ module.exports = {
         },      
         rolesIdRol: {
             field: 'roles_id_rol',
-            allowNull: false,
+            foreignKey: true,
             type: DataTypes.INTEGER,
             references: { 
                 model: 'roles', 
@@ -117,13 +117,13 @@ module.exports = {
             allowNull: false,
             type: DataTypes.DATE,
             field: 'created_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         },
         updatedAt: {
             allowNull: false,
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             field: 'updated_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         }
     });
     await queryInterface.createTable('marcas_dispositivos', 
@@ -142,13 +142,13 @@ module.exports = {
             allowNull: false,
             type: DataTypes.DATE,
             field: 'created_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         },
         updatedAt: {
             allowNull: false,
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             field: 'updated_at',
-            defaultValue: Sequelize.NOW}
+            defaultValue: new Date()}
     })
     await queryInterface.createTable('tipos_dispositivos', 
     {
@@ -166,13 +166,13 @@ module.exports = {
             allowNull: false,
             type: DataTypes.DATE,
             field: 'created_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         },
         updatedAt: {
             allowNull: false,
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             field: 'updated_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         }
     })
     await queryInterface.createTable('dispositivos', 
@@ -192,7 +192,6 @@ module.exports = {
             type: DataTypes.STRING,
         },
         marcas_dispositivos_ID_marcas: {
-            allowNull: false,
             type: DataTypes.INTEGER,
             references: { 
                 model: 'marcas_dispositivos', 
@@ -200,7 +199,6 @@ module.exports = {
             },
         },
         tipos_dispositivos_ID_tipos: {
-            allowNull: false,
             type: DataTypes.INTEGER,
             references: {
                 model: 'tipos_dispositivos',
@@ -211,13 +209,38 @@ module.exports = {
             allowNull: false,
             type: DataTypes.DATE,
             field: 'created_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         },
         updatedAt: {
             allowNull: false,
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             field: 'updated_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
+        }
+    })
+    await queryInterface.createTable('repuestos', 
+    {
+        ID_repuesto: {
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+            type: DataTypes.INTEGER,
+        },
+        repuesto: {
+            allowNull: false,
+            type: DataTypes.STRING,
+        },
+        createdAt:{
+            allowNull: false,
+            type: DataTypes.DATE,
+            field: 'created_at',
+            defaultValue: new Date()
+        },
+        updatedAt: {
+            allowNull: false,
+            type: DataTypes.DATE,
+            field: 'updated_at',
+            defaultValue: new Date()
         }
     })
     await queryInterface.createTable('tickets', 
@@ -245,7 +268,6 @@ module.exports = {
             type: DataTypes.INTEGER
         },
         dispositivos_ID_dispositivo: {
-            allowNull: false,
             type: DataTypes.INTEGER,
             references: {
                 model: 'dispositivos',
@@ -253,7 +275,6 @@ module.exports = {
             }
         },
         clientes_ID_cliente: {
-            allowNull: false,
             type: DataTypes.INTEGER,
             references: {
                 model: 'clientes',
@@ -261,7 +282,6 @@ module.exports = {
             }
         },
         colaboradores_ID_colaborador: {
-            allowNull: false,
             type: DataTypes.INTEGER,
             references: {
                 model: 'colaboradores',
@@ -272,45 +292,19 @@ module.exports = {
             allowNull: false,
             type: DataTypes.DATE,
             field: 'created_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         },
         updatedAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
-            field: 'updated_at',
-            defaultValue: Sequelize.NOW
-        }
-    })
-    await queryInterface.createTable('repuestos', 
-    {
-        ID_repuesto: {
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-            type: DataTypes.INTEGER,
-        },
-        repuesto: {
-            allowNull: false,
-            type: DataTypes.STRING,
-        },
-        createdAt:{
             allowNull: false,
             type: DataTypes.DATE,
-            field: 'created_at',
-            defaultValue: Sequelize.NOW
-        },
-        updatedAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
             field: 'updated_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         }
-    })
+    })    
     await queryInterface.createTable('repuestos_has_tickets', 
     {
         repuestosIdRepuesto: {
             field: 'repuestos_id_repuesto',
-            allowNull: false,
             type: DataTypes.INTEGER,
             references: {
                 model: 'repuestos',
@@ -319,7 +313,6 @@ module.exports = {
         },
         ticketsIdTicket: {
             field: 'tickets_id_ticket',
-            allowNull: false,
             type: DataTypes.INTEGER,
             references: {
                 model: 'tickets',
@@ -330,13 +323,13 @@ module.exports = {
             allowNull: false,
             type: DataTypes.DATE,
             field: 'created_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         },
         updatedAt: {
             allowNull: false,
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             field: 'updated_at',
-            defaultValue: Sequelize.NOW
+            defaultValue: new Date()
         }
     })
     },

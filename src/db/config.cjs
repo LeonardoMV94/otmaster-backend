@@ -8,6 +8,7 @@ module.exports = {
     production: {
         url: config.URI,
         dialect: 'mysql',
+        logging: true,
         dialectOptions: {
             ssl: {
                 rejectUnauthorized: false
