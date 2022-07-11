@@ -11,32 +11,7 @@
 module.exports = {
   async up (queryInterface, DataTypes) {
 
-    await queryInterface.createTable('roles', 
-    {
-        id_rol: {
-            autoIncrement: true,
-            allowNull: false,
-            primaryKey: true,
-            type: DataTypes.INTEGER,
-        },
-        nombre_rol: {
-            allowNull: false,
-            type: DataTypes.STRING,
-            unique: true
-        },
-        createdAt:{
-            allowNull: false,
-            type: DataTypes.DATE,
-            field: 'created_at',
-            defaultValue: new Date()
-        },
-        updatedAt: {
-            allowNull: false,
-            type: DataTypes.DATE,
-            field: 'updated_at',
-            defaultValue: new Date()
-        }
-    })
+
 
     await queryInterface.createTable('clientes', 
     {
@@ -65,6 +40,83 @@ module.exports = {
         tel_cliente: {
             allowNull: false,
             type: DataTypes.STRING,
+        },
+        createdAt:{
+            allowNull: false,
+            type: DataTypes.DATE,
+            field: 'created_at',
+            defaultValue: new Date()
+        },
+        updatedAt: {
+            allowNull: false,
+            type: DataTypes.DATE,
+            field: 'updated_at',
+            defaultValue: new Date()
+        }
+    })
+    await queryInterface.createTable('tipos_dispositivos', 
+    {
+        ID_tipo: {
+            field: 'id_tipo',
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+            type: DataTypes.INTEGER,
+        },
+        nombre_tipo: {
+            allowNull: false,
+            type: DataTypes.STRING,
+        },
+        createdAt:{
+            allowNull: false,
+            type: DataTypes.DATE,
+            field: 'created_at',
+            defaultValue: new Date()
+        },
+        updatedAt: {
+            allowNull: false,
+            type: DataTypes.DATE,
+            field: 'updated_at',
+            defaultValue: new Date()
+        }
+    })
+    await queryInterface.createTable('marcas_dispositivos', 
+    {
+        ID_marca: {
+            field: 'id_marca',
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+            type: DataTypes.INTEGER,
+        },
+        nombre_marca: {
+            allowNull: false,
+            type: DataTypes.STRING,
+        },
+        createdAt:{
+            allowNull: false,
+            type: DataTypes.DATE,
+            field: 'created_at',
+            defaultValue: new Date()
+        },
+        updatedAt: {
+            allowNull: false,
+            type: DataTypes.DATE,
+            field: 'updated_at',
+            defaultValue: new Date()}
+    })
+    await queryInterface.createTable('roles', 
+    {
+        id_rol: {
+            autoIncrement: true,
+            allowNull: false,
+            primaryKey: true,
+            type: DataTypes.INTEGER,
+        },
+        nombre_rol: {
+            allowNull: false,
+            type: DataTypes.STRING,
+            unique: true
         },
         createdAt:{
             allowNull: false,
@@ -126,57 +178,6 @@ module.exports = {
             defaultValue: new Date()
         }
     });
-    await queryInterface.createTable('marcas_dispositivos', 
-    {
-        ID_marca: {
-            field: 'id_marca',
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-            type: DataTypes.INTEGER,
-        },
-        nombre_marca: {
-            allowNull: false,
-            type: DataTypes.STRING,
-        },
-        createdAt:{
-            allowNull: false,
-            type: DataTypes.DATE,
-            field: 'created_at',
-            defaultValue: new Date()
-        },
-        updatedAt: {
-            allowNull: false,
-            type: DataTypes.DATE,
-            field: 'updated_at',
-            defaultValue: new Date()}
-    })
-    await queryInterface.createTable('tipos_dispositivos', 
-    {
-        ID_tipo: {
-            field: 'id_tipo',
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-            type: DataTypes.INTEGER,
-        },
-        nombre_tipo: {
-            allowNull: false,
-            type: DataTypes.STRING,
-        },
-        createdAt:{
-            allowNull: false,
-            type: DataTypes.DATE,
-            field: 'created_at',
-            defaultValue: new Date()
-        },
-        updatedAt: {
-            allowNull: false,
-            type: DataTypes.DATE,
-            field: 'updated_at',
-            defaultValue: new Date()
-        }
-    })
     await queryInterface.createTable('dispositivos', 
     {
         id_dispositivo: {
@@ -195,8 +196,8 @@ module.exports = {
             type: DataTypes.STRING,
         },
         marcas_dispositivos_ID_marcas: {
-            type: DataTypes.INTEGER,
             field: 'marcas_dispositivos_id_marcas',
+            type: DataTypes.INTEGER,            
             references: { 
                 model: 'marcas_dispositivos', 
                 key: 'id_marca',
@@ -209,32 +210,6 @@ module.exports = {
                 model: 'tipos_dispositivos',
                 key: 'id_tipo',
             }
-        },
-        createdAt:{
-            allowNull: false,
-            type: DataTypes.DATE,
-            field: 'created_at',
-            defaultValue: new Date()
-        },
-        updatedAt: {
-            allowNull: false,
-            type: DataTypes.DATE,
-            field: 'updated_at',
-            defaultValue: new Date()
-        }
-    })
-    await queryInterface.createTable('repuestos', 
-    {
-        ID_repuesto: {
-            field: 'id_repuesto',
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-            type: DataTypes.INTEGER,
-        },
-        repuesto: {
-            allowNull: false,
-            type: DataTypes.STRING,
         },
         createdAt:{
             allowNull: false,
@@ -308,6 +283,33 @@ module.exports = {
             defaultValue: new Date()
         }
     })    
+    await queryInterface.createTable('repuestos', 
+    {
+        ID_repuesto: {
+            field: 'id_repuesto',
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+            type: DataTypes.INTEGER,
+        },
+        repuesto: {
+            allowNull: false,
+            type: DataTypes.STRING,
+        },
+        createdAt:{
+            allowNull: false,
+            type: DataTypes.DATE,
+            field: 'created_at',
+            defaultValue: new Date()
+        },
+        updatedAt: {
+            allowNull: false,
+            type: DataTypes.DATE,
+            field: 'updated_at',
+            defaultValue: new Date()
+        }
+    })
+
     await queryInterface.createTable('repuestos_has_tickets', 
     {
         repuestosIdRepuesto: {
