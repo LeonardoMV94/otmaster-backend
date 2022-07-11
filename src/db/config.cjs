@@ -5,6 +5,11 @@ module.exports = {
         url: config.URI,
         dialect: 'postgres',
         logging: true,
+        dialectOptions: {
+            ssl: {
+                rejectUnauthorized: false
+            }
+        }
     },
     production: {
         url: config.URI,
