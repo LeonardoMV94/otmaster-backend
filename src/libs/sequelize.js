@@ -22,8 +22,9 @@ const sequelize = new Sequelize( config.URI, options);
 
 setupModels(sequelize);
 
-// no se debe usar en produccion
+
 if(!config.isProd){
+    // no se debe usar en produccion
     sequelize.sync( { force: true} )
 }
 

@@ -180,6 +180,7 @@ module.exports = {
     await queryInterface.createTable('dispositivos', 
     {
         id_dispositivo: {
+            field: 'id_dispositivo',
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -275,7 +276,7 @@ module.exports = {
             type: DataTypes.INTEGER,
             references: {
                 model: 'dispositivos',
-                key: 'ID_dispositivo',
+                key: 'id_dispositivo',
             }
         },
         clientes_ID_cliente: {

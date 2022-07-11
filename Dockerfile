@@ -1,5 +1,5 @@
 FROM node:16
-ENV NODE_ENV=development \
+ENV NODE_ENV=production \
     PORT=10000
 
 WORKDIR /home/app
