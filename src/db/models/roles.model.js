@@ -33,7 +33,7 @@ class Rol extends Model{
         //models
         this.hasMany(models.Colaborador, {
             as: 'colaboradores',
-            foreignKey: 'roles_id_rol'
+            foreignKey: 'rolesIdRol'
         })
     }
     static config(sequelize) {

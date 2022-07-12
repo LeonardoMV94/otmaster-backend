@@ -3,7 +3,8 @@ import {Model, DataTypes, Sequelize} from 'sequelize';
 const REPUESTOS_TABLE = 'repuestos';
 
 const RepuestoSchema = {
-    ID_repuesto: {
+    id_repuesto: {
+        field: 'id_repuesto',
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
@@ -13,14 +14,6 @@ const RepuestoSchema = {
         allowNull: false,
         type: DataTypes.STRING,
     },
-    // tickets_ID_ticket: {
-    //     allowNull: false,
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //         model: 'tickets',
-    //         key: 'id_ticket',
-    //     }
-    // },
     createdAt:{
         allowNull: false,
         type: DataTypes.DATE,
@@ -38,12 +31,7 @@ const RepuestoSchema = {
 class Repuesto extends Model{
     static associate(models){
         //relacion uno a muchos
-        this.belongsToMany(models.Ticket, {
-            as: 'items',
-            through: models.Repuestos_has_tickets,
-            foreignKey: 'repuestosIdRepuesto',
-            otherKey: 'ticketsIdTicket'
-        })
+        this.belongsToMany(models.Ticket, {through: 'RepuestosTicket'})
     }
     static config(sequelize) {
         return {

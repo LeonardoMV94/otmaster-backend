@@ -1,7 +1,7 @@
 import express from "express";
 import RolesService from '../services/roles.service.js';
 import validatorHandler from '../middlewares/validator.handler.js';
-import { createRolSchema, getRolSchema } from '../schemas/roles.schema.js';
+import { createRolSchema, getRolSchema, updateRolSchema } from '../schemas/roles.schema.js';
 
 const router = express.Router();
 const service = new RolesService();
@@ -42,6 +42,8 @@ router.post('/add/',
 );
 
 router.patch('/:id_rol',
+    validatorHandler(getRolSchema, 'params'),
+    validatorHandler(updateRolSchema, 'body'),
     async (req, res, next) => {
         try {
             const { id_rol } = req.params;
@@ -55,6 +57,7 @@ router.patch('/:id_rol',
 );
 
 router.delete('/delete/:id_rol',
+    validatorHandler(getRolSchema, 'params'),
     async (req, res, next) => {
         try {
             const { id_rol } = req.params;

@@ -1,46 +1,44 @@
 import Joi from 'joi';
 
-const ID_ticket = Joi.number().min().max();
-const diagnostico_ticket = Joi.string().min(3).max(300);
-const resolucion_ticket = Joi.string().min(3).max(300);
-const problema_ticket = Joi.string().min(3).max(300);
+const id_ticket = Joi.number().positive();
+const diagnostico_ticket = Joi.string().min(3).max(500);
+const resolucion_ticket = Joi.string().min(3).max(500);
+const problema_ticket = Joi.string().min(3).max(500);
+
 // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Estado_tickets'.
-// const estado_tickets_ID_estado = Joi.number().min(1).max(5);
+const estado_ticket = Joi.number().positive();
 // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Dispositivos'.
-// const dispositivos_ID_dispositivo = Joi.number().min(8);
+const dispositivosIdDispositivo = Joi.number().positive();
 // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Clientes'.
-// const clientes_ID_cliente = Joi.number().min().max();
+const clientesIdCliente = Joi.number().positive();
 // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Colaboradores'.
-// const colaboradores_ID_colaborador = Joi.number().min().max();
+const colaboradoresIdColaborador = Joi.number().positive();
 // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Repuestos'.
-// const repuestos_ID_repuesto = Joi.number().min().max();
+// const repuestosIdRepuesto = Joi.number().positive();
 
 const createTicketSchema = Joi.object({
-    ID_ticket: ID_ticket.required(),    
     problema_ticket: problema_ticket.required(),
     diagnostico_ticket: diagnostico_ticket,
     resolucion_ticket: resolucion_ticket,
-    // estado_tickets_ID_estado: estado_tickets_ID_estado.required(),
-    // dispositivos_ID_dispositivo: dispositivos_ID_dispositivo.required(),
-    // clientes_ID_cliente: clientes_ID_cliente.required(),
-    // colaboradores_ID_colaborador: colaboradores_ID_colaborador.required(),
-    // repuestos_ID_repuesto: repuestos_ID_repuesto.required(),
+    estado_ticket: estado_ticket.required(),
+    dispositivosIdDispositivo: dispositivosIdDispositivo.required(),
+    clientesIdCliente: clientesIdCliente.required(),
+    colaboradoresIdColaborador: colaboradoresIdColaborador.required()
 });
 
 const updateTicketSchema = Joi.object({
-    ID_ticket: ID_ticket,
     diagnostico_ticket: diagnostico_ticket,
     resolucion_ticket: resolucion_ticket,
-    problema_ticket: problema_ticket
-    // estado_tickets_ID_estado: estado_tickets_ID_estado,
-    // dispositivos_ID_dispositivo: dispositivos_ID_dispositivo,
-    // clientes_ID_cliente: clientes_ID_cliente,
-    // colaboradores_ID_colaborador: colaboradores_ID_colaborador,
-    // repuestos_ID_repuesto: repuestos_ID_repuesto,
+    problema_ticket: problema_ticket,
+    estado_ticket: estado_ticket,
+    dispositivosIdDispositivo: dispositivosIdDispositivo,
+    clientesIdCliente: clientesIdCliente,
+    colaboradoresIdColaborador: colaboradoresIdColaborador,
+    //repuestosIdRepuesto: repuestosIdRepuesto,
 });
 
 const getTicketByid = Joi.object({
-    ID_ticket: ID_ticket.required()
+    id_ticket: id_ticket.required()
 });
 
 export {

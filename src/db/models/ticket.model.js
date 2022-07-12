@@ -3,7 +3,8 @@ import {Model, DataTypes, Sequelize} from 'sequelize';
 const TICKETS_TABLE = 'tickets';
 
 const TicketSchema = {
-    ID_ticket: {
+    id_ticket: {
+        field: 'id_ticket',
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
@@ -25,7 +26,8 @@ const TicketSchema = {
         allowNull: false,
         type: DataTypes.INTEGER
     },
-    dispositivos_ID_dispositivo: {
+    dispositivosIdDispositivo: {
+        field: 'dispositivos_id_dispositivo',
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
@@ -33,7 +35,8 @@ const TicketSchema = {
             key: 'id_dispositivo',
         }
     },
-    clientes_ID_cliente: {
+    clientesIdCliente: {
+        field: 'clientes_id_cliente',
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
@@ -41,7 +44,8 @@ const TicketSchema = {
             key: 'rut_cliente',
         }
     },
-    colaboradores_ID_colaborador: {
+    colaboradoresIdColaborador: {
+        field: 'colaboradores_id_colaborador',
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
@@ -66,15 +70,19 @@ const TicketSchema = {
 class Ticket extends Model{
     static associate(models){
         //relacion uno a muchos hacia repuesto
-        this.belongsToMany(models.Repuesto, {
-            as: 'items',
-            through: models.Repuestos_has_tickets,
-            foreignKey: 'ticketsIdTicket',
-            otherKey: 'repuestosIdRepuesto'
-        })
-        this.belongsTo( models.Cliente, { as : 'ticket_cliente' } )
+        // this.belongsToMany(models.Repuesto, {
+        //     as: 'items',
+        //     through: models.Repuestos_has_tickets,
+        //     foreignKey: 'tickets_id_ticket',
+        //     otherKey: 'repuestos_id_repuesto'
+        // })
+        
+        this.belongsTo( models.Colaborador, { as : 'colaboradores' } )
+        this.belongsTo( models.Cliente, { as : 'clientes' } )
+        this.belongsTo( models.Dispositivo, { as : 'dispositivos' } )
 
-        // TODO: faltan relaciones: colaboradores, clientes, dispositivos
+        // many to many
+        this.belongsToMany(models.Repuesto, {as: 'repuestosticket',through: 'RepuestosTicket'})
         
     }
     static config(sequelize) {

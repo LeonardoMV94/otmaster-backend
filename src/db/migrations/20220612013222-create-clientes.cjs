@@ -190,7 +190,7 @@ module.exports = {
         },
         num_serie_dispositivo: {
             allowNull: false,
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
         },
         modelo: {
             allowNull: false,
@@ -312,7 +312,6 @@ module.exports = {
             defaultValue: new Date()
         }
     })
-
     await queryInterface.createTable('repuestos_has_tickets', 
     {
         repuestosIdRepuesto: {

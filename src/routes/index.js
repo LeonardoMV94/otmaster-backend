@@ -10,7 +10,7 @@ import ticketsRouter from './tickets.router.js';
 import rolesRouter from './roles.router.js';
 import authRouter from './auth.router.js';
 
-import { checkAdminRol } from './../middlewares/auth.handler.js';
+// import { checkAdminRol } from './../middlewares/auth.handler.js';
 
 const routerApi = (app) => {
     const router = express.Router();
@@ -20,7 +20,9 @@ const routerApi = (app) => {
     //endpoints
     router.use( '/auth', authRouter );
     router.use( '/clientes', passport.authenticate('jwt', { session: false } ), clientesRouter );
-    router.use( '/roles',  passport.authenticate('jwt', { session: false } ), checkAdminRol, rolesRouter );
+    router.use( '/roles',  
+    // passport.authenticate('jwt', { session: false } ), checkAdminRol, 
+    rolesRouter );
     router.use( '/colaboradores',  colaboradoresRouter );
     router.use( '/dispositivos', passport.authenticate('jwt', { session: false } ), dispositivosRouter );
     router.use('/tipos-dispositivos',passport.authenticate('jwt', { session: false } ), tipoDispositivo)

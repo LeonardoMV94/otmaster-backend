@@ -3,7 +3,7 @@ import {Model, DataTypes, Sequelize} from 'sequelize';
 const MARCAS_DISPOSITIVOS_TABLE = 'marcas_dispositivos';
 
 const MarcaDispositivoSchema = {
-    ID_marca: {
+    id_marca: {
         field: 'id_marca',
         allowNull: false,
         primaryKey: true,
@@ -29,8 +29,12 @@ const MarcaDispositivoSchema = {
 }
 
 class MarcaDispositivo extends Model{
-    static associate(){
+    static associate(models){
         //models
+        this.hasMany(models.Dispositivo, {
+            as: 'dispositivos',
+            foreignKey: 'marcas_dispositivos_id_marcas'
+        })
     }
     static config(sequelize) {
         return {

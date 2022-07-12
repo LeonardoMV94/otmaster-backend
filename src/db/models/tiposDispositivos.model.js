@@ -29,8 +29,12 @@ const TipoDispositivoSchema = {
 }
 
 class TipoDispositivo extends Model{
-    static associate(){
+    static associate(models){
         //models
+        this.hasMany(models.Dispositivo, {
+            as: 'dispositivos',
+            foreignKey: 'tipos_dispositivos_id_tipos'
+        })
     }
     static config(sequelize) {
         return {

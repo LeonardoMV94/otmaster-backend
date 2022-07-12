@@ -7,8 +7,12 @@ const createRolSchema = Joi.object({
     nombre_rol: nombre_rol.required(),
 });
 
+const updateRolSchema = Joi.object({
+    nombre_rol: nombre_rol,
+});
+
 const getRolSchema = Joi.object({
     id_rol : id_rol.required()
 });
 
-export { createRolSchema, getRolSchema }
+export { createRolSchema, getRolSchema, updateRolSchema }

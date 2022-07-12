@@ -20,12 +20,12 @@ router.get('/', async(req,res,next) => {
     }
 });
 
-router.get('/:ID_tipo', 
+router.get('/:id_tipo', 
     validatorHandler(getTipoDispositivoByid, 'params'),
     async (req,res,next) => {    
     try {
-        const {ID_tipo} = req.params;
-        const results = await service.findById(ID_tipo);
+        const {id_tipo} = req.params;
+        const results = await service.findById(id_tipo);
         res.status(200).json(results);
     } catch (error) {
         next(error);
@@ -37,10 +37,10 @@ router.post('/add/',
     validatorHandler(createTipoDispositivoSchema, 'body'),
     async (req, res, next) => {        
     try {
-        const marcaDispositivoObj = {
-            nombre_marca: req.body.nombre_marca
+        const tipoDispositivoObj = {
+            nombre_tipo: req.body.nombre_tipo
         };
-        const dis = await service.create(marcaDispositivoObj);
+        const dis = await service.create(tipoDispositivoObj);
         res.status(200).json(dis);
 
     } catch (error) {
@@ -48,7 +48,7 @@ router.post('/add/',
     }
 });
 
-router.put('/update/:ID_tipo', 
+router.put('/update/:id_tipo', 
     validatorHandler(updateTipoDispositivoSchema, 'body'),
     async (req, res,next) =>{
     try {

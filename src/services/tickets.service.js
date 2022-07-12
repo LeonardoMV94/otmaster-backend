@@ -29,16 +29,7 @@ class TicketsService {
      * @returns {Object} Retorna todas las rows de la tabla TICKETS
      */
     async find(){
-        const tickets = await models.Ticket.findAll(
-            
-        {
-            include: ['ticket_cliente']
-            // JOIN foreign Key 
-            //include : ['items']
-                // model: Colaborador,
-                // model: Dispositivo            
-        }
-        );
+        const tickets = await models.Ticket.findAll();
         return tickets;
     };
     
@@ -48,7 +39,9 @@ class TicketsService {
      * @returns {Object} retorna el row encontrado en bd
      */
     async findById(id){
-        const ticket = await models.Ticket.findByPk(id);
+        const ticket = await models.Ticket.findByPk(id, {
+            include: ['clientes', 'colaboradores','dispositivos', 'repuestosticket']
+        });
         if(!ticket){
             throw boom.notFound('ticket not found');
         }

@@ -4,7 +4,8 @@ import config from '../config/config.js';
 
 const options = {
     dialect:`${config.dbDialect}`,
-    logging: config.isProd ? false : true
+    logging: config.isProd ? false : true,
+    underscored: true
 }
 
 if (config.isProd) {
@@ -23,9 +24,11 @@ const sequelize = new Sequelize( config.URI, options);
 setupModels(sequelize);
 
 
-// if(!config.isProd){
-    // no se debe usar en produccion
-    sequelize.sync( { force: true} )
-// }
+if(!config.isProd){
+    // no se debe usar en produccion - force:true sobrescribe la DB
+    sequelize.sync(
+         //{force: true}
+        )
+}
 
 export default sequelize;

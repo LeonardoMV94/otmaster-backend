@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-const ID_tipo = Joi.number().min(1);
+const id_tipo = Joi.number().positive();
 const nombre_tipo = Joi.string();
 
 const createTipoDispositivoSchema = Joi.object({ 
@@ -12,7 +12,7 @@ const updateTipoDispositivoSchema = Joi.object({
 });
 
 const getTipoDispositivoByid = Joi.object({
-    ID_tipo: ID_tipo.required()
+    id_tipo: id_tipo.required()
 });
 
 export {

@@ -12,20 +12,22 @@ const DispositivoSchema = {
     },
     num_serie_dispositivo: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
     },
     modelo: {
         allowNull: false,
         type: DataTypes.STRING,
     },
-    marcas_dispositivos_ID_marcas: {
+    marcasDispositivosIdMarcas: {
+        field: 'marcas_dispositivos_id_marcas',
         type: DataTypes.INTEGER,
         references: { 
             model: 'marcas_dispositivos', 
             key: 'id_marca',
         },
     },
-    tipos_dispositivos_ID_tipos: {
+    tiposDispositivosIdTipos: {
+        field: 'tipos_dispositivos_id_tipos',
         type: DataTypes.INTEGER,
         references: {
             model: 'tipos_dispositivos',
@@ -47,8 +49,14 @@ const DispositivoSchema = {
 }
 
 class Dispositivo extends Model{
-    static associate(){
+    static associate(models){
         //models
+        this.belongsTo( models.MarcaDispositivo, { as : 'marcas' } )
+        this.belongsTo( models.TipoDispositivo, { as : 'tipos' } )
+        this.hasMany(models.Ticket, {
+            as: 'tickets',
+            foreignKey: 'dispositivos_id_dispositivo'
+        })
     }
     static config(sequelize) {
         return {

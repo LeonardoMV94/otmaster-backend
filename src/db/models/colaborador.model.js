@@ -58,6 +58,11 @@ class Colaborador extends Model{
     static associate(models){
         //models
         this.belongsTo( models.Rol, { as : 'roles' } )
+        
+        this.hasMany(models.Ticket, {
+            as: 'tickets',
+            foreignKey: 'colaboradoresIdColaborador'
+        })
     }
     static config(sequelize) {
         return {

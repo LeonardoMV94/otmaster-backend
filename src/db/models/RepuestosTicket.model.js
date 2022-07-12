@@ -1,11 +1,10 @@
 import {Model, DataTypes, Sequelize} from 'sequelize';
 
-const REPUESTOS_HAS_TICKETS_TABLE = 'repuestos_has_tickets';
+const REPUESTOS_TICKET_TABLE = 'repuestos_ticket';
 
-const Repuestos_has_tickets_Schema = {
+const Repuestos_ticket_Schema = {
     repuestosIdRepuesto: {
         field: 'repuestos_id_repuesto',
-        allowNull: false,
         type: DataTypes.INTEGER,
         references: {
             model: 'repuestos',
@@ -14,7 +13,6 @@ const Repuestos_has_tickets_Schema = {
     },
     ticketsIdTicket: {
         field: 'tickets_id_ticket',
-        allowNull: false,
         type: DataTypes.INTEGER,
         references: {
             model: 'tickets',
@@ -35,22 +33,22 @@ const Repuestos_has_tickets_Schema = {
     }
 };
 
-class Repuestos_has_tickets extends Model{
+class Repuestos_ticket extends Model{
     static associate(){
         //models
     }
     static config(sequelize) {
         return {
             sequelize,
-            tableName: REPUESTOS_HAS_TICKETS_TABLE,
-            modelName: 'Repuestos_has_tickets',
+            tableName: REPUESTOS_TICKET_TABLE,
+            modelName: 'Repuestos_ticket',
             timestamp: false
         };
     }
 }
 
 export {
-    REPUESTOS_HAS_TICKETS_TABLE,
-    Repuestos_has_tickets_Schema,
-    Repuestos_has_tickets
+    REPUESTOS_TICKET_TABLE,
+    Repuestos_ticket_Schema,
+    Repuestos_ticket
 };
