@@ -61,7 +61,7 @@ class Colaborador extends Model{
         
         this.hasMany(models.Ticket, {
             as: 'tickets',
-            foreignKey: 'colaboradoresIdColaborador'
+            foreignKey: 'colaboradoresRutColaborador'
         })
     }
     static config(sequelize) {

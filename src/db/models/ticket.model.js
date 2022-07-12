@@ -35,8 +35,8 @@ const TicketSchema = {
             key: 'id_dispositivo',
         }
     },
-    clientesIdCliente: {
-        field: 'clientes_id_cliente',
+    clientesRutCliente: {
+        field: 'clientes_rut_cliente',
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
@@ -44,8 +44,8 @@ const TicketSchema = {
             key: 'rut_cliente',
         }
     },
-    colaboradoresIdColaborador: {
-        field: 'colaboradores_id_colaborador',
+    colaboradoresRutColaborador: {
+        field: 'colaboradores_rut_colaborador',
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {

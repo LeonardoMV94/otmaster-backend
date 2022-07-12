@@ -48,7 +48,7 @@ class Cliente extends Model{
         //models
         this.hasMany(models.Ticket, {
             as: 'tickets',
-            foreignKey: 'clientes_id_cliente'
+            foreignKey: 'clientesRutCliente'
         })
     }
     static config(sequelize) {

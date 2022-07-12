@@ -36,11 +36,10 @@ router.post('/add/',
     async (req, res, next) => {        
     try {
         const dispositivoObj = {
-            ID_dispositivo: req.body.ID_dispositivo,
             num_serie_dispositivo: req.body.num_serie_dispositivo,
-            modelo: req.body.modelo
-            // marcas_dispositivos_ID_marcas: req.body.marcas_dispositivos_ID_marcas,
-            // tipos_dispositivos_ID_tipos: req.body.tipos_dispositivos_ID_tipos
+            modelo: req.body.modelo,
+            marcasDispositivosIdMarcas: req.body.marcasDispositivosIdMarcas,
+            tiposDispositivosIdTipos: req.body.tiposDispositivosIdTipos
         };
         const dis = await service.create(dispositivoObj);
         res.status(200).json(dis);
@@ -50,17 +49,19 @@ router.post('/add/',
     }
 });
 
-router.put('/update/:rut', async (req, res,next) =>{
+router.put('/update/:id_dispositivo', 
+    validatorHandler(getDispositivoByid, 'params'),
+    validatorHandler(updateDispositivoSchema, 'body'),
+    async (req, res,next) =>{
     try {
-        const {id} = req.params;
+        const {id_dispositivo} = req.params;
         const dispositivoObj = {
-            ID_dispositivo: req.body.ID_dispositivo,
             num_serie_dispositivo: req.body.num_serie_dispositivo,
-            modelo: req.body.modelo
-            // marcas_dispositivos_ID_marcas: req.body.marcas_dispositivos_ID_marcas,
-            // tipos_dispositivos_ID_tipos: req.body.tipos_dispositivos_ID_tipos
+            modelo: req.body.modelo,
+            marcasDispositivosIdMarcas: req.body.marcasDispositivosIdMarcas,
+            tiposDispositivosIdTipos: req.body.tiposDispositivosIdTipos
         };
-        const mensaje = await service.update(id,dispositivoObj);
+        const mensaje = await service.update(id_dispositivo,dispositivoObj);
         res.status(200).json(mensaje);
     } catch (error) {
         next(error);
@@ -78,18 +79,3 @@ router.delete('/delete/:id', async (req, res,next) => {
 });
 
 export default router;
-
-/*
-router.get('/', async(error,req, res,next) => {
-    try {        
-        const results = await service.find();
-        if (results.length > 0) {
-            res.json(results[0]);
-        } else {
-            res.json({mensaje: "no hay dispositivos"})
-        }
-    } catch (error) {
-        next(error)
-    }     
-})
-*/

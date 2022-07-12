@@ -41,8 +41,8 @@ router.post('/add/',
             problema_ticket: req.body.problema_ticket,
             estado_ticket: req.body.estado_ticket,
             dispositivosIdDispositivo: req.body.dispositivosIdDispositivo,
-            clientesIdCliente: req.body.clientesIdCliente,
-            colaboradoresIdColaborador: req.body.colaboradoresIdColaborador
+            clientesRutCliente: req.body.clientesRutCliente,
+            colaboradoresRutColaborador: req.body.colaboradoresRutColaborador
         };
         const tic = await service.create(ticketObj);
         res.status(200).json(tic);
