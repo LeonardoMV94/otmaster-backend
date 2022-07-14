@@ -1,0 +1,1 @@
+import{V as s,c9 as o}from"./index.1c445223.js";const g=()=>{const t=o();return{checkAuthStatus:()=>t.checkAuthentication(),loginUser:async e=>await t.signInUser(e),logout:()=>{t.logout()},username:s(()=>t.getUserName),rol:s(()=>t.getRol)}};export{g as u};
