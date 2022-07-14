@@ -1,9 +1,7 @@
 import express from "express";
 import MarcaDispositivoService from "../services/MarcaDispositivo.service.js";
 import validatorHandler from "../middlewares/validator.handler.js";
-import { createMarcaDispositivoSchema,
-    updateMarcaDispositivoSchema,
-    getMarcaDispositivoByid} from '../schemas/marcaDispositivos.schema.js'
+import { createMarcaDispositivoSchema, updateMarcaDispositivoSchema, getMarcaDispositivoByid} from '../schemas/marcaDispositivos.schema.js'
 
 const router = express.Router();
 const service = new MarcaDispositivoService();
@@ -18,12 +16,12 @@ router.get('/', async(req,res,next) => {
     }
 });
 
-router.get('/:ID_marca', 
+router.get('/:id_marca', 
     validatorHandler(getMarcaDispositivoByid, 'params'),
     async (req,res,next) => {    
     try {
-        const {ID_marca} = req.params;
-        const results = await service.findById(ID_marca);
+        const {id_marca} = req.params;
+        const results = await service.findById(id_marca);
         res.status(200).json(results);
     } catch (error) {
         next(error);
@@ -46,25 +44,28 @@ router.post('/add/',
     }
 });
 
-router.put('/update/:ID_marca', 
+router.put('/update/:id_marca', 
+    validatorHandler(getMarcaDispositivoByid, 'params'),
     validatorHandler(updateMarcaDispositivoSchema, 'body'),
     async (req, res,next) =>{
     try {
-        const {ID_marca} = req.params;
+        const {id_marca} = req.params;
         const marcaDispositivoObj = {
             nombre_marca: req.body.nombre_marca
         };
-        const mensaje = await service.update(ID_marca,marcaDispositivoObj);
+        const mensaje = await service.update(id_marca,marcaDispositivoObj);
         res.status(200).json(mensaje);
     } catch (error) {
         next(error);
     }
 });
 
-router.delete('/delete/:ID_marca', async (req, res,next) => {
+router.delete('/delete/:id_marca', 
+    validatorHandler(getMarcaDispositivoByid, 'params'),
+    async (req, res,next) => {
     try {
-        const {ID_marca} = req.params;
-        const mensaje = await service.delete(ID_marca);
+        const {id_marca} = req.params;
+        const mensaje = await service.delete(id_marca);
         res.status(200).json(mensaje);
     } catch (error) {
         next(error);

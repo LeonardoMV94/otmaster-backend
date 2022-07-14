@@ -23,9 +23,7 @@ class ClientesService {
      * @returns Array retorna arreglo de objetos 
      */
     async find() {
-        const clientes = await models.Cliente.findAll( {
-            include: ['tickets']
-        });
+        const clientes = await models.Cliente.findAll();
         return clientes;
     };
 
@@ -35,7 +33,9 @@ class ClientesService {
      * @returns Object retorna cliente || retorna error not found
      */
     async findById(id) {
-        const cliente = await models.Cliente.findByPk(id);
+        const cliente = await models.Cliente.findByPk(id, {
+            include: ['tickets']
+        });
         if (!cliente){
             throw boom.notFound('cliente not found');
         }

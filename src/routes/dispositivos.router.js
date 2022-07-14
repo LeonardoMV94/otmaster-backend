@@ -16,19 +16,14 @@ router.get('/', async(req,res,next) => {
     }       
 });
 
-router.get('/:id', async (req,res,next) => {    
+router.get('/:id_dispositivo', async (req,res,next) => {    
     try {
-        const {id} = req.params;
-        const results = await service.findById(id);
+        const {id_dispositivo} = req.params;
+        const results = await service.findById(id_dispositivo);
         res.status(200).json(results);
-        // if (results.length > 0) {
-        // } else {
-        //     res.status(404).json({mensaje: "no existe el cliente"})
-        // }
     } catch (error) {
         next(error);
-    }
-    
+    }    
 });
 
 router.post('/add/',

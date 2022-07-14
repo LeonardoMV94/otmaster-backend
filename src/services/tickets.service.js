@@ -32,6 +32,33 @@ class TicketsService {
         const tickets = await models.Ticket.findAll();
         return tickets;
     };
+
+    async countEstados() {
+        const cant1 = await models.Ticket.count({where: {estado_ticket: 1}})
+        const cant2 = await models.Ticket.count({where: {estado_ticket: 2}})
+        const cant3 = await models.Ticket.count({where: {estado_ticket: 3}})
+        const cant4 = await models.Ticket.count({where: {estado_ticket: 4}})
+        return [
+            {
+                id: 1,
+                tipo: 'Abierto',
+                cantidad: cant1
+            },
+            {
+                id: 2,
+                tipo: 'En Proceso',
+                cantidad: cant2
+            },{
+                id: 1,
+                tipo: 'Cerrado',
+                cantidad: cant3
+            },{
+                id: 1,
+                tipo: 'Cancelado',
+                cantidad: cant4
+            },
+        ]
+    }
     
     /**
      * Esta funcion busca un ticket por ID_ticket (PrimaryKey) en la tabla TICKETS

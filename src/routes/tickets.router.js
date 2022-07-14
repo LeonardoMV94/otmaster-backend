@@ -23,10 +23,6 @@ router.get('/:id_ticket',
         const {id_ticket} = req.params;
         const results = await service.findById(id_ticket);
         res.status(200).json(results);
-        // if (results.length > 0) {
-        // } else {
-        //     res.status(404).json({mensaje: "no existe el cliente"})
-        // }
     } catch (error) {
         next(error);
     }
@@ -89,10 +85,12 @@ router.patch('/update/:id_ticket',
 );
 
 
-router.delete('/delete/:id', async (req, res,next) => {
+router.delete('/delete/:id_ticket',
+    validatorHandler(getTicketByid, 'params'),
+    async (req, res,next) => {
     try {
-        const {id} = req.params;
-        const mensaje = await service.delete(id);
+        const {id_ticket} = req.params;
+        const mensaje = await service.delete(id_ticket);
         res.status(200).json(mensaje);
     } catch (error) {
         next(error);
