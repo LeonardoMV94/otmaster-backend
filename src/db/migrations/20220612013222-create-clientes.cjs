@@ -56,7 +56,7 @@ module.exports = {
     }, { underscored: true})
     await queryInterface.createTable('tipos_dispositivos', 
     {
-        ID_tipo: {
+        id_tipo: {
             field: 'id_tipo',
             allowNull: false,
             primaryKey: true,
@@ -252,21 +252,24 @@ module.exports = {
             allowNull: false,
             type: DataTypes.INTEGER
         },
-        dispositivos_ID_dispositivo: {
+        dispositivosIdDispositivo: {
+            field: 'dispositivos_id_dispositivo',
             type: DataTypes.INTEGER,
             references: {
                 model: 'dispositivos',
                 key: 'id_dispositivo',
             }
         },
-        clientes_ID_cliente: {
+        clientesRutCliente: {
+            field: 'clientes_rut_cliente',
             type: DataTypes.INTEGER,
             references: {
                 model: 'clientes',
                 key: 'rut_cliente',
             }
         },
-        colaboradores_ID_colaborador: {
+        colaboradoresRutColaborador: {
+            field: 'colaboradores_rut_colaborador',
             type: DataTypes.INTEGER,
             references: {
                 model: 'colaboradores',
@@ -288,7 +291,7 @@ module.exports = {
     }, { underscored: true})    
     await queryInterface.createTable('repuestos', 
     {
-        ID_repuesto: {
+        id_repuesto: {
             field: 'id_repuesto',
             allowNull: false,
             primaryKey: true,
@@ -312,7 +315,7 @@ module.exports = {
             defaultValue: new Date()
         }
     })
-    await queryInterface.createTable('repuestos_has_tickets', 
+    await queryInterface.createTable('repuestos_ticket', 
     {
         repuestosIdRepuesto: {
             field: 'repuestos_id_repuesto',
@@ -360,6 +363,6 @@ module.exports = {
     await queryInterface.drop('tipos_dispositivos');
     await queryInterface.drop('tickets');
     await queryInterface.drop('repuestos');
-    await queryInterface.drop('repuestos_has_tickets');
+    await queryInterface.drop('repuestos_ticket');
   }
 };

@@ -3,7 +3,7 @@ import {Model, DataTypes, Sequelize} from 'sequelize';
 const TIPOS_DISPOSITIVOS_TABLE = 'tipos_dispositivos';
 
 const TipoDispositivoSchema = {
-    ID_tipo: {
+    id_tipo: {
         field: 'id_tipo',
         allowNull: false,
         primaryKey: true,
