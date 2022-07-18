@@ -1,9 +1,9 @@
 import Joi from 'joi';
 
 const id_ticket = Joi.number().positive();
-const diagnostico_ticket = Joi.string().min(3).max(500);
-const resolucion_ticket = Joi.string().min(3).max(500);
-const problema_ticket = Joi.string().min(3).max(500);
+const diagnostico_ticket = Joi.string().max(500);
+const resolucion_ticket = Joi.string().max(500);
+const problema_ticket = Joi.string().max(500);
 
 // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Estado_tickets'.
 const estado_ticket = Joi.number().positive();
