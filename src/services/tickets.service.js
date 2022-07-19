@@ -29,7 +29,9 @@ class TicketsService {
      * @returns {Object} Retorna todas las rows de la tabla TICKETS
      */
     async find(){
-        const tickets = await models.Ticket.findAll();
+        const tickets = await models.Ticket.findAll({
+            include: ['clientes', 'colaboradores','dispositivos', 'repuestosticket']
+        });
         return tickets;
     };
 
@@ -59,7 +61,6 @@ class TicketsService {
             },
         ]
     }
-    
     /**
      * Esta funcion busca un ticket por ID_ticket (PrimaryKey) en la tabla TICKETS
      * @param {Number} id Es el primary key de ticket

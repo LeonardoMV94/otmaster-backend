@@ -6,6 +6,16 @@ import {createTicketSchema, updateTicketSchema, getTicketByid} from "../schemas/
 const router = express.Router();
 const service = new TicketsService();
 
+
+router.get('/estados/', async(req, res, next) => {
+    try {
+        const results = await service.countEstados()
+        res.status(200).json(results)
+    } catch (error) {
+        next(error)
+    }
+})
+
 // CRUD Tickets
 router.get('/', async(req,res,next) => {
     try {
@@ -47,6 +57,7 @@ router.post('/add/',
         next(error);
     }
 });
+
 
 // router.put('/update/:id_ticket', 
 //     validatorHandler(updateTicketSchema, 'body'),

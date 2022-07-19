@@ -51,11 +51,11 @@ const DispositivoSchema = {
 class Dispositivo extends Model{
     static associate(models){
         //models
-        this.belongsTo( models.MarcaDispositivo, { as : 'marcas' } )
-        this.belongsTo( models.TipoDispositivo, { as : 'tipos' } )
+        this.belongsTo( models.MarcaDispositivo, { as : 'marcas', foreignKey: 'marcasDispositivosIdMarcas'} )
+        this.belongsTo( models.TipoDispositivo, { as : 'tipos', foreignKey: 'tiposDispositivosIdTipos' } )
         this.hasMany(models.Ticket, {
             as: 'tickets',
-            foreignKey: 'dispositivos_id_dispositivo'
+            foreignKey: 'dispositivosIdDispositivo'
         })
     }
     static config(sequelize) {

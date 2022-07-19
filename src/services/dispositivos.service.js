@@ -26,7 +26,9 @@ class DispositivosService {
      * @returns {Object} Retorna todas las rows de la tabla DISPOSITIVOS
      */
      async find(){
-        const dispositivos = await models.Dispositivo.findAll();
+        const dispositivos = await models.Dispositivo.findAll({
+            include: ["marcas","tipos"]
+        });
         return dispositivos;
     };
 
@@ -36,7 +38,9 @@ class DispositivosService {
      * @returns {Object} retorna el row encontrado en bd
      */
      async findById(id){
-        const dispositivo = await models.Dispositivo.findByPk(id);
+        const dispositivo = await models.Dispositivo.findByPk(id, {
+            include: ["marcas","tipos"]
+        });
         if(!dispositivo){
             throw boom.notFound('dispositivo not found');
         }

@@ -33,7 +33,7 @@ class MarcaDispositivo extends Model{
         //models
         this.hasMany(models.Dispositivo, {
             as: 'dispositivos',
-            foreignKey: 'marcas_dispositivos_id_marcas'
+            foreignKey: 'marcasDispositivosIdMarcas'
         })
     }
     static config(sequelize) {
