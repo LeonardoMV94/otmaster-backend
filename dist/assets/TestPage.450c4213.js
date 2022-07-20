@@ -1,0 +1,1 @@
+import{Q as t}from"./QPage.3ce65134.js";import{F as a}from"./FormCliente.f8c8ca2e.js";import{aA as e,W as r,b3 as o,a4 as s}from"./index.5404b0db.js";import"./QForm.5d83addf.js";import"./useCliente.b70220ac.js";const u={__name:"TestPage",setup(m){return(p,c)=>(e(),r(t,null,{default:o(()=>[s(a)]),_:1}))}};export{u as default};

@@ -22,10 +22,10 @@ const routerApi = (app) => {
     router.use( '/auth', authRouter );
     router.use( '/clientes', passport.authenticate('jwt', { session: false } ), clientesRouter );
     router.use( '/roles', passport.authenticate('jwt', { session: false } ), checkAdminRol, rolesRouter );
-    router.use( '/colaboradores', passport.authenticate('jwt', { session: false } ), checkAdminRol,  colaboradoresRouter );
+    router.use( '/colaboradores', passport.authenticate('jwt', { session: false } ), checkAdminRol, colaboradoresRouter );
     router.use( '/dispositivos', passport.authenticate('jwt', { session: false } ), dispositivosRouter );
-    router.use('/tipos-dispositivos',passport.authenticate('jwt', { session: false } ), tipoDispositivo)
-    router.use('/marcas-dispositivos',passport.authenticate('jwt', { session: false } ), marcaDispositivo)
+    router.use( '/tipos-dispositivos',passport.authenticate('jwt', { session: false } ), tipoDispositivo)
+    router.use( '/marcas-dispositivos',passport.authenticate('jwt', { session: false } ), marcaDispositivo)
     router.use( '/tickets', passport.authenticate('jwt', { session: false } ), ticketsRouter );
     router.use( '/repuestos', passport.authenticate('jwt', { session: false } ), repuestosRouter)
 }
