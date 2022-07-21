@@ -1,1 +1,0 @@
-import{V as o,c8 as s}from"./index.8134a439.js";const l=()=>{const t=s();return{checkAuthStatus:()=>t.checkAuthentication(),loginUser:async e=>(console.log("useath composable -> loginUser: ",e!==null),await t.signInUser(e)),logout:()=>{t.logout()},username:o(()=>t.getUserName),rol:o(()=>t.getRol),isAdmin:o(()=>t.getRol).value=="admin"}};export{l as u};

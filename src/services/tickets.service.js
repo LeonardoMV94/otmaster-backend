@@ -39,6 +39,14 @@ class TicketsService {
         });
         return tickets;
     };
+    async countListRepuestos(){
+        const [list] = await sequelize.query(`SELECT repuesto, COUNT(repuestos_ticket.repuestos_id_repuesto) 
+        FROM repuestos 
+        LEFT JOIN repuestos_ticket on repuestos.id_repuesto = repuestos_ticket.repuestos_id_repuesto 
+        GROUP BY repuestos.repuesto ORDER BY COUNT(repuestos_ticket.repuestos_id_repuesto) DESC;`)
+        console.log("########## repuestos: ", list)
+        return list
+    }
 
     async countEstados() {
         const cant1 = await models.Ticket.count({where: {estado_ticket: 1}})

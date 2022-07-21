@@ -26,6 +26,16 @@ router.get('/', async(req,res,next) => {
     }
 });
 
+
+router.get('/countrepuestos/', async (req, res, next) => {
+    try {
+        const results = await service.countListRepuestos()
+        res.status(200).json(results)
+    } catch (error) {
+        next(error);
+    }
+})
+
 router.get('/:id_ticket', 
     validatorHandler(getTicketByid, 'params'),
     async (req,res,next) => {    
@@ -35,9 +45,9 @@ router.get('/:id_ticket',
         res.status(200).json(results);
     } catch (error) {
         next(error);
-    }
-    
+    }    
 });
+
 
 router.post('/add-item/',
     validatorHandler(addItemSchema, 'body'),
@@ -71,28 +81,6 @@ router.post('/add/',
     }
 });
 
-
-// router.put('/update/:id_ticket', 
-//     validatorHandler(updateTicketSchema, 'body'),
-//     async (req, res,next) =>{
-//     try {
-//         const {id} = req.params;
-//         const ticketObj = {
-//             id_ticket: req.body.id_ticket,
-//             diagnostico_ticket: req.body.diagnostico_ticket,
-//             resolucion_ticket: req.body.resolucion_ticket
-//             estado_tickets_ID_estado: req.body.estado_tickets_ID_estado,
-//             dispositivos_ID_dispositivo: req.body.dispositivos_ID_dispositivo,
-//             clientes_ID_cliente: req.body.clientes_ID_cliente,
-//             colaboradores_ID_colaborador: req.body.colaboradores_ID_colaborador,
-//             repuestos_ID_repuesto: req.body.repuestos_ID_repuesto
-//         };
-//         const mensaje = await service.update(id,ticketObj);
-//         res.status(200).json(mensaje);
-//     } catch (error) {
-//         next(error);
-//     }
-// });
 router.patch('/update/:id_ticket',
     validatorHandler(getTicketByid, 'params'),
     validatorHandler(updateTicketSchema, 'body'),
