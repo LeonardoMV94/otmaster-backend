@@ -44,19 +44,14 @@ router.post('/add/',
     }
 });
 
-router.put('/update/:id_dispositivo', 
+router.patch('/update/:id_dispositivo', 
     validatorHandler(getDispositivoByid, 'params'),
     validatorHandler(updateDispositivoSchema, 'body'),
     async (req, res,next) =>{
     try {
         const {id_dispositivo} = req.params;
-        const dispositivoObj = {
-            num_serie_dispositivo: req.body.num_serie_dispositivo,
-            modelo: req.body.modelo,
-            marcasDispositivosIdMarcas: req.body.marcasDispositivosIdMarcas,
-            tiposDispositivosIdTipos: req.body.tiposDispositivosIdTipos
-        };
-        const mensaje = await service.update(id_dispositivo,dispositivoObj);
+        const body = req.body
+        const mensaje = await service.update(id_dispositivo,body);
         res.status(200).json(mensaje);
     } catch (error) {
         next(error);
