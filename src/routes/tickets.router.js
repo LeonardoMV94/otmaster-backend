@@ -62,6 +62,19 @@ router.post('/add-item/',
     }
 });
 
+router.post('/add-multiple-items/:id_ticket',
+    async (req, res, next) => {        
+    try {
+        const {id_ticket} = req.params
+        const body = req.body
+        const tic = await service.addMultipleItems(id_ticket,body);
+        res.status(201).json(tic);
+
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.post('/add/',
     validatorHandler(createTicketSchema, 'body'),
     async (req, res, next) => {        

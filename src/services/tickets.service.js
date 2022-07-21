@@ -28,6 +28,11 @@ class TicketsService {
         const newItem = await models.repuestos_ticket.create(data);
         return newItem;
     }
+    async addMultipleItems(id_ticket,data){
+        await models.repuestos_ticket.destroy({ where: {ticketsIdTicket: id_ticket}})
+        const resp = await models.repuestos_ticket.bulkCreate(data)
+        return resp
+    }
 
     /**
      * Esta funcion retorna todos los tickets
