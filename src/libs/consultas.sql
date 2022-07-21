@@ -137,3 +137,8 @@ LEFT OUTER JOIN (
     INNER JOIN "repuestos" AS "items" ON "items"."id_repuesto" = "items->repuestos_ticket"."tickets_id_ticket") 
     ON "Ticket"."id_ticket" = "items->repuestos_ticket"."repuestos_id_repuesto" WHERE "Ticket"."id_ticket" = '5';
 
+
+SELECT repuesto, COUNT(repuestos_ticket.repuestos_id_repuesto) 
+FROM repuestos 
+LEFT JOIN repuestos_ticket on repuestos.id_repuesto = repuestos_ticket.repuestos_id_repuesto 
+GROUP BY repuestos.repuesto ORDER BY COUNT(repuestos_ticket.repuestos_id_repuesto) DESC;
