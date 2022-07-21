@@ -64,11 +64,11 @@ class TicketsService {
                 tipo: 'En Proceso',
                 cantidad: cant2
             },{
-                id: 1,
+                id: 3,
                 tipo: 'Cerrado',
                 cantidad: cant3
             },{
-                id: 1,
+                id: 4,
                 tipo: 'Cancelado',
                 cantidad: cant4
             },
