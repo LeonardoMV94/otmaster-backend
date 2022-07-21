@@ -44,16 +44,14 @@ router.post('/add/',
     }
 });
 
-router.put('/update/:id_marca', 
+router.patch('/update/:id_marca', 
     validatorHandler(getMarcaDispositivoByid, 'params'),
     validatorHandler(updateMarcaDispositivoSchema, 'body'),
     async (req, res,next) =>{
     try {
         const {id_marca} = req.params;
-        const marcaDispositivoObj = {
-            nombre_marca: req.body.nombre_marca
-        };
-        const mensaje = await service.update(id_marca,marcaDispositivoObj);
+        const body = req.body
+        const mensaje = await service.update(id_marca,body);
         res.status(200).json(mensaje);
     } catch (error) {
         next(error);

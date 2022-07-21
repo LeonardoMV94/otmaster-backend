@@ -33,10 +33,10 @@ class TipoDispositivoService {
         return rta;
     };
 
-    async delete(rut) {        
-        const tipoDispositivo = await this.findById(rut);
+    async delete(id_tipo) {        
+        const tipoDispositivo = await this.findById(id_tipo);
         await tipoDispositivo.destroy();
-        return { rut };
+        return { id_tipo };
     };
 }
 

@@ -32,10 +32,10 @@ class RepuestosService {
         return rta;
     };
 
-    async delete(id) {        
-        const Repuesto = await this.findById(id);
+    async delete(id_repuesto) {        
+        const Repuesto = await this.findById(id_repuesto);
         await Repuesto.destroy();
-        return { id };
+        return { id_repuesto };
     };
 }
 

@@ -27,16 +27,16 @@ class MarcaDispositivoService {
         return marcaDispositivo;
     };
 
-    async update(id, changes) {
-        const marcaDispositivo = await this.findById(id);
+    async update(id_marca, changes) {
+        const marcaDispositivo = await this.findById(id_marca);
         const rta = await marcaDispositivo.update(changes);
         return rta;
     };
 
-    async delete(id) {        
-        const marcaDispositivo = await this.findById(id);
+    async delete(id_marca) {        
+        const marcaDispositivo = await this.findById(id_marca);
         await marcaDispositivo.destroy();
-        return { id };
+        return { id_marca };
     };
 }
 

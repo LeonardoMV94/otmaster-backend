@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-const ID_marca = Joi.number().min().max();
+const id_marca = Joi.number().positive();
 const nombre_marca = Joi.string();
 
 const createMarcaDispositivoSchema = Joi.object({ 
@@ -12,7 +12,7 @@ const updateMarcaDispositivoSchema = Joi.object({
 });
 
 const getMarcaDispositivoByid = Joi.object({
-    ID_marca: ID_marca.required()
+    id_marca: id_marca.required()
 });
 
 export {
