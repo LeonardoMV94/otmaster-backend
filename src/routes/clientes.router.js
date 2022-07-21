@@ -32,9 +32,7 @@ router.get('/:rut_cliente',
     
 });
 
-router.post('/add/',
-    validatorHandler(createClienteSchema, 'body'),
-    async (req, res, next) => {        
+router.post('/add/', validatorHandler(createClienteSchema, 'body'), async (req, res, next) => {        
     try {
         const clienteObj = {
             rut_cliente: req.body.rut_cliente,
@@ -52,33 +50,27 @@ router.post('/add/',
 })
 
 
-router.put('/update/:rut', 
+router.put('/update/:rut_cliente', 
+    validatorHandler(getClienteByid, 'params'),
     validatorHandler(updateClienteSchema, 'body'),
     async (req, res,next) =>{
     try {
         const {rut_cliente} = req.params;
-        const clienteObj = {
-            nombre_cliente: req.body.nombre_cliente,
-            appat_cliente: req.body.appat_cliente,
-            apmat_cliente: req.body.apmat_cliente,
-            correo_cliente: req.body.correo_cliente,
-            tel_cliente: req.body.tel_cliente
-        };
-        const mensaje = await service.update(rut_cliente,clienteObj);
+        const body = req.body
+        const mensaje = await service.update(rut_cliente,body);
         res.status(200).json(mensaje);
     } catch (error) {
         next(error);
     }
-
-
 });
 
-router.delete('/delete/:id', 
+router.delete('/delete/:rut_cliente',
+    validatorHandler(getClienteByid, 'params'),
     checkAdminRol,
     async (req, res,next) => {
     try {
-        const {id} = req.params;
-        const mensaje = await service.delete(id);
+        const {rut_cliente} = req.params;
+        const mensaje = await service.delete(rut_cliente);
         res.status(200).json(mensaje);
     } catch (error) {
         next(error);

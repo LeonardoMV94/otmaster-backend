@@ -1,7 +1,7 @@
 import express from "express";
 import TicketsService from "../services/tickets.service.js";
 import validatorHandler from "../middlewares/validator.handler.js";
-import {createTicketSchema, updateTicketSchema, getTicketByid} from "../schemas/tickets.schema.js";
+import {createTicketSchema,addItemSchema, updateTicketSchema, getTicketByid} from "../schemas/tickets.schema.js";
 
 const router = express.Router();
 const service = new TicketsService();
@@ -37,6 +37,19 @@ router.get('/:id_ticket',
         next(error);
     }
     
+});
+
+router.post('/add-item/',
+    validatorHandler(addItemSchema, 'body'),
+    async (req, res, next) => {        
+    try {
+        const body = req.body
+        const tic = await service.addItem(body);
+        res.status(201).json(tic);
+
+    } catch (error) {
+        next(error);
+    }
 });
 
 router.post('/add/',

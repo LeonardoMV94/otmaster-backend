@@ -1,7 +1,7 @@
 import Joi from 'joi';
 
 const id_repuesto = Joi.number().positive();
-const repuesto = Joi.string();
+const repuesto = Joi.string().min(3).max(25);
 
 const createRepuestoSchema = Joi.object({
     repuesto: repuesto.required(),

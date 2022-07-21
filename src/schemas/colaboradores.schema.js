@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-const rut_colaborador = Joi.number().min(1000000).max(30000000);
+const rut_colaborador = Joi.number().min(1000000).max(79000000);
 const password_colaborador = Joi.string().min(8).max(30);
 const nombre_colaborador = Joi.string().min(3).max(30);
 const apmat_colaborador = Joi.string().min(3).max(30);

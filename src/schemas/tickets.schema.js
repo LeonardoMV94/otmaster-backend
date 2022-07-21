@@ -14,7 +14,8 @@ const clientesRutCliente = Joi.number().positive();
 // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Colaboradores'.
 const colaboradoresRutColaborador = Joi.number().positive();
 // 'Foreign Key' que hace referencia a la 'Primary Key' de la tabla 'Repuestos'.
-// const repuestosIdRepuesto = Joi.number().positive();
+const repuestosIdRepuesto = Joi.number().positive();
+const ticketsIdTicket = Joi.number().positive()
 
 const createTicketSchema = Joi.object({
     problema_ticket: problema_ticket.required(),
@@ -25,7 +26,10 @@ const createTicketSchema = Joi.object({
     clientesRutCliente: clientesRutCliente.required(),
     colaboradoresRutColaborador: colaboradoresRutColaborador.required()
 });
-
+const addItemSchema = Joi.object({
+    repuestosIdRepuesto: repuestosIdRepuesto.required(),
+    ticketsIdTicket: ticketsIdTicket.required()
+})
 const updateTicketSchema = Joi.object({
     diagnostico_ticket: diagnostico_ticket,
     resolucion_ticket: resolucion_ticket,
@@ -44,5 +48,6 @@ const getTicketByid = Joi.object({
 export {
     createTicketSchema,
     updateTicketSchema,
-    getTicketByid
+    getTicketByid,
+    addItemSchema
 }

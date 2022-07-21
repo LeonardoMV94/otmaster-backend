@@ -41,7 +41,7 @@ class Repuestos_ticket extends Model{
         return {
             sequelize,
             tableName: REPUESTOS_TICKET_TABLE,
-            modelName: 'Repuestos_ticket',
+            modelName: 'repuestos_ticket',
             timestamp: false
         };
     }

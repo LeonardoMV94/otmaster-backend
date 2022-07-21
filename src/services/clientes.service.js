@@ -56,13 +56,13 @@ class ClientesService {
 
     /**
      * Funcion que elimina row por id en la tabla CLIENTES
-     * @param {Number} rut 
+     * @param {Number} rut_cliente 
      * @returns Object retorna objeto con id de la tabla eliminada
      */
-    async delete(rut) {        
-        const cliente = await this.findById(rut);
+    async delete(rut_cliente) {        
+        const cliente = await this.findById(rut_cliente);
         await cliente.destroy();
-        return { rut };
+        return { rut_cliente };
     };
 }
 

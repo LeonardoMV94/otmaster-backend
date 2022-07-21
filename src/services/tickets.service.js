@@ -24,13 +24,18 @@ class TicketsService {
         return newTicket;
     };
 
+    async addItem(data) {
+        const newItem = await models.repuestos_ticket.create(data);
+        return newItem;
+    }
+
     /**
      * Esta funcion retorna todos los tickets
      * @returns {Object} Retorna todas las rows de la tabla TICKETS
      */
     async find(){
         const tickets = await models.Ticket.findAll({
-            include: ['clientes', 'colaboradores','dispositivos', 'repuestosticket']
+            include: ['clientes', 'colaboradores','dispositivos', 'items']
         });
         return tickets;
     };
@@ -68,7 +73,7 @@ class TicketsService {
      */
     async findById(id){
         const ticket = await models.Ticket.findByPk(id, {
-            include: ['clientes', 'colaboradores','dispositivos', 'repuestosticket']
+            include: ['clientes', 'colaboradores','dispositivos', 'items']
         });
         if(!ticket){
             throw boom.notFound('ticket not found');

@@ -82,7 +82,12 @@ class Ticket extends Model{
         this.belongsTo( models.Dispositivo, { as : 'dispositivos' } )
 
         // many to many
-        this.belongsToMany(models.Repuesto, {as: 'repuestosticket',through: 'RepuestosTicket'})
+        this.belongsToMany(models.Repuesto, {
+            as: 'items',
+            through: 'repuestos_ticket',
+            foreignKey: 'ticketsIdTicket',
+            otherKey: 'repuestosIdRepuesto'
+        })
         
     }
     static config(sequelize) {
